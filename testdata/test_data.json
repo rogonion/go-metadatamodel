@@ -1,0 +1,839 @@
+[
+  {
+    "SourceId": [
+      1
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "Notes": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      null,
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "kenya"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  10
+                ],
+                "Longitude": [
+                  11
+                ]
+              },
+              {
+                "Latitude": [
+                  4
+                ],
+                "Longitude": [
+                  8
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              null
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      2
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "uganda"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  10
+                ],
+                "Longitude": [
+                  11
+                ]
+              },
+              {
+                "Latitude": [
+                  4
+                ],
+                "Longitude": [
+                  8
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              null
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "arabiensis"
+                ],
+                "DnaSeq": [
+                  null,
+                  true,
+                  false,
+                  false
+                ]
+              },
+              {
+                "Name": [
+                  "gambiae"
+                ],
+                "DnaSeq": [
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      3
+    ],
+    "Bio": [
+      "no"
+    ],
+    "Occ": [
+      "yes"
+    ],
+    "DnaSeq2": [
+      "iky",
+      "ovn",
+      "ovn",
+      null,
+      "iky",
+      "iky",
+      "iky",
+      "ovn",
+      "ovn",
+      "iky"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "uganda"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  10
+                ],
+                "Longitude": [
+                  11
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              null
+            ]
+          },
+          {
+            "SiteName": [
+              "Karuguru"
+            ],
+            "AdminLevels": [
+              "Ruai",
+              "Race course"
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "arabiensis"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      4
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "DateOfPublication": [
+      "1970-01-02T09:07:04.672Z"
+    ],
+    "Notes": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      null,
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "kenya"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  10
+                ],
+                "Longitude": [
+                  11
+                ]
+              },
+              {
+                "Latitude": [
+                  4
+                ],
+                "Longitude": [
+                  8
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              null
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      5
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "uganda"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  10
+                ],
+                "Longitude": [
+                  11
+                ]
+              },
+              {
+                "Latitude": [
+                  4
+                ],
+                "Longitude": [
+                  8
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              null
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "arabiensis"
+                ],
+                "DnaSeq": [
+                  null,
+                  true,
+                  false,
+                  false
+                ]
+              },
+              {
+                "Name": [
+                  "gambiae"
+                ],
+                "DnaSeq": [
+                  false,
+                  true,
+                  false,
+                  true,
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      6
+    ],
+    "Bio": [
+      "no"
+    ],
+    "Occ": [
+      "yes"
+    ],
+    "DnaSeq2": [
+      "iky",
+      "ovn",
+      "ovn",
+      null,
+      "iky",
+      "iky",
+      "iky",
+      "ovn",
+      "ovn",
+      "iky",
+      "iky",
+      "ovn",
+      "ovn",
+      null,
+      "iky",
+      "iky",
+      "iky",
+      "ovn",
+      "ovn",
+      "iky",
+      "iky",
+      "ovn",
+      "ovn",
+      null,
+      "iky",
+      "iky",
+      "iky",
+      "ovn",
+      "ovn",
+      "iky"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "uganda"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  10
+                ],
+                "Longitude": [
+                  11
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              null
+            ]
+          },
+          {
+            "SiteName": [
+              "Karuguru"
+            ],
+            "AdminLevels": [
+              "Ruai",
+              "Race course"
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "arabiensis"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      7
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "Notes": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      null,
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "kenya"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  10
+                ],
+                "Longitude": [
+                  11
+                ]
+              },
+              {
+                "Latitude": [
+                  4
+                ],
+                "Longitude": [
+                  8
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              null
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      8
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "uganda"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  10
+                ],
+                "Longitude": [
+                  11
+                ]
+              },
+              {
+                "Latitude": [
+                  4
+                ],
+                "Longitude": [
+                  8
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              null
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "arabiensis"
+                ],
+                "DnaSeq": [
+                  null,
+                  true,
+                  false,
+                  false
+                ]
+              },
+              {
+                "Name": [
+                  "gambiae"
+                ],
+                "DnaSeq": [
+                  false,
+                  true,
+                  false,
+                  true,
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      9
+    ],
+    "Bio": [
+      "no"
+    ],
+    "Occ": [
+      "yes"
+    ],
+    "DnaSeq2": [
+      "iky",
+      "ovn",
+      "ovn",
+      null,
+      "iky",
+      "iky",
+      "iky",
+      "ovn",
+      "ovn",
+      "iky"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "uganda"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  10
+                ],
+                "Longitude": [
+                  11
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              null
+            ]
+          },
+          {
+            "SiteName": [
+              "Karuguru"
+            ],
+            "AdminLevels": [
+              "Ruai",
+              "Race course"
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "arabiensis"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Country": [
+          "nigeria"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  10
+                ],
+                "Longitude": [
+                  11
+                ]
+              },
+              {
+                "Latitude": [
+                  4
+                ],
+                "Longitude": [
+                  8
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              null
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "arabiensis"
+                ],
+                "DnaSeq": [
+                  null,
+                  true,
+                  false,
+                  false
+                ]
+              },
+              {
+                "Name": [
+                  "gambiae"
+                ],
+                "DnaSeq": [
+                  false,
+                  true,
+                  false,
+                  true,
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      10
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "Notes": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      null,
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "kenya"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  10
+                ],
+                "Longitude": [
+                  11
+                ]
+              },
+              {
+                "Latitude": [
+                  4
+                ],
+                "Longitude": [
+                  8
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              null
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      11
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "uganda"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  10
+                ],
+                "Longitude": [
+                  11
+                ]
+              },
+              {
+                "Latitude": [
+                  4
+                ],
+                "Longitude": [
+                  8
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              null
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "arabiensis"
+                ],
+                "DnaSeq": [
+                  null,
+                  true,
+                  false,
+                  false
+                ]
+              },
+              {
+                "Name": [
+                  "gambiae"
+                ],
+                "DnaSeq": [
+                  false,
+                  true,
+                  false,
+                  true,
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      12
+    ],
+    "Bio": [
+      "no"
+    ],
+    "Occ": [
+      "yes"
+    ],
+    "DnaSeq2": [
+      "iky",
+      "ovn",
+      "ovn",
+      null,
+      "iky",
+      "iky",
+      "iky",
+      "ovn",
+      "ovn",
+      "iky"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "uganda"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  10
+                ],
+                "Longitude": [
+                  11
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              null
+            ]
+          },
+          {
+            "SiteName": [
+              "Karuguru"
+            ],
+            "AdminLevels": [
+              "Ruai",
+              "Race course"
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "arabiensis"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

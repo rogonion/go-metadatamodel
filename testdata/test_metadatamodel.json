@@ -1,0 +1,1261 @@
+{
+  "FieldGroupKey": "$",
+  "FieldGroupName": "Mosquito Vector Data",
+  "FieldGroupDescription": "Bionomics, Occurence, and resistance data",
+  "FieldGroupMaxEntries": 1,
+  "GroupFields": [
+    {
+      "SourceId": {
+        "FieldGroupKey": "$.GroupFields[*].SourceId",
+        "FieldGroupName": "source id",
+        "FieldGroupMaxEntries": 1,
+        "FieldDataType": "Number",
+        "FieldUi": "Number",
+        "DatabaseFieldAddDataToFullTextSearchIndex": true,
+        "FieldGroupIsPrimaryKey": true
+      },
+      "Bio": {
+        "FieldGroupKey": "$.GroupFields[*].Bio",
+        "FieldGroupName": "bio",
+        "FieldGroupMaxEntries": 1,
+        "FieldDataType": "Boolean",
+        "FieldUi": "Checkbox",
+        "FieldCheckboxValuesUseInStorage": true,
+        "FieldCheckboxValueIfTrue": {
+          "Type": "Text",
+          "Value": "yes"
+        },
+        "FieldCheckboxValueIfFalse": {
+          "Type": "Text",
+          "Value": "no"
+        },
+        "FieldGroupDescription": "Choose bio if data has bionomics"
+      },
+      "Occ": {
+        "FieldGroupKey": "$.GroupFields[*].Occ",
+        "FieldGroupName": "occ",
+        "FieldGroupMaxEntries": 1,
+        "FieldDataType": "Boolean",
+        "FieldUi": "Checkbox",
+        "FieldGroupDescription": "Choose occ if data has occurrence",
+        "FieldCheckboxValueIfTrue": {
+          "Type": "Text",
+          "Value": "yes"
+        },
+        "FieldCheckboxValueIfFalse": {
+          "Type": "Text",
+          "Value": "no"
+        },
+        "FieldCheckboxValuesUseInStorage": true
+      },
+      "DateOfPublication": {
+        "FieldGroupKey": "$.GroupFields[*].DateOfPublication",
+        "FieldGroupName": "date of publication",
+        "FieldGroupMaxEntries": 1,
+        "FieldDataType": "Timestamp",
+        "FieldUi": "DateTime",
+        "FieldDatetimeFormat": "yyyy-mm-dd hh:mm"
+      },
+      "SiteAndGeoreferencing": {
+        "FieldGroupKey": "$.GroupFields[*].SiteAndGeoreferencing",
+        "FieldGroupName": "Site and Georeferencing",
+        "FieldGroupMaxEntries": 0,
+        "GroupFields": [
+          {
+            "Country": {
+              "FieldGroupKey": "$.GroupFields[*].SiteAndGeoreferencing.GroupFields[*].Country",
+              "FieldGroupName": "country",
+              "FieldGroupMaxEntries": 1,
+              "FieldDataType": "Text",
+              "FieldUi": "Select",
+              "FieldSelectOptions": [
+                {
+                  "Label": "algeria",
+                  "Type": "Text",
+                  "Value": "algeria"
+                },
+                {
+                  "Label": "angola",
+                  "Type": "Text",
+                  "Value": "angola"
+                },
+                {
+                  "Label": "benin",
+                  "Type": "Text",
+                  "Value": "benin"
+                },
+                {
+                  "Label": "botswana",
+                  "Type": "Text",
+                  "Value": "botswana"
+                },
+                {
+                  "Label": "burkina faso",
+                  "Type": "Text",
+                  "Value": "burkina faso"
+                },
+                {
+                  "Label": "burundi",
+                  "Type": "Text",
+                  "Value": "burundi"
+                },
+                {
+                  "Label": "cabo verde",
+                  "Type": "Text",
+                  "Value": "cabo verde"
+                },
+                {
+                  "Label": "cameroon",
+                  "Type": "Text",
+                  "Value": "cameroon"
+                },
+                {
+                  "Label": "central african republic",
+                  "Type": "Text",
+                  "Value": "central african republic"
+                },
+                {
+                  "Label": "chad",
+                  "Type": "Text",
+                  "Value": "chad"
+                },
+                {
+                  "Label": "comoros",
+                  "Type": "Text",
+                  "Value": "comoros"
+                },
+                {
+                  "Label": "congo",
+                  "Type": "Text",
+                  "Value": "congo"
+                },
+                {
+                  "Label": "cote divoire",
+                  "Type": "Text",
+                  "Value": "cote divoire"
+                },
+                {
+                  "Label": "djibouti",
+                  "Type": "Text",
+                  "Value": "djibouti"
+                },
+                {
+                  "Label": "dr congo",
+                  "Type": "Text",
+                  "Value": "dr congo"
+                },
+                {
+                  "Label": "egypt",
+                  "Type": "Text",
+                  "Value": "egypt"
+                },
+                {
+                  "Label": "equatorial guinea",
+                  "Type": "Text",
+                  "Value": "equatorial guinea"
+                },
+                {
+                  "Label": "eritrea",
+                  "Type": "Text",
+                  "Value": "eritrea"
+                },
+                {
+                  "Label": "eswatini",
+                  "Type": "Text",
+                  "Value": "eswatini"
+                },
+                {
+                  "Label": "ethiopia",
+                  "Type": "Text",
+                  "Value": "ethiopia"
+                },
+                {
+                  "Label": "gabon",
+                  "Type": "Text",
+                  "Value": "gabon"
+                },
+                {
+                  "Label": "gambia",
+                  "Type": "Text",
+                  "Value": "gambia"
+                },
+                {
+                  "Label": "ghana",
+                  "Type": "Text",
+                  "Value": "ghana"
+                },
+                {
+                  "Label": "guinea",
+                  "Type": "Text",
+                  "Value": "guinea"
+                },
+                {
+                  "Label": "guinea bissau",
+                  "Type": "Text",
+                  "Value": "guinea bissau"
+                },
+                {
+                  "Label": "kenya",
+                  "Type": "Text",
+                  "Value": "kenya"
+                },
+                {
+                  "Label": "lesotho",
+                  "Type": "Text",
+                  "Value": "lesotho"
+                },
+                {
+                  "Label": "liberia",
+                  "Type": "Text",
+                  "Value": "liberia"
+                },
+                {
+                  "Label": "libya",
+                  "Type": "Text",
+                  "Value": "libya"
+                },
+                {
+                  "Label": "madagascar",
+                  "Type": "Text",
+                  "Value": "madagascar"
+                },
+                {
+                  "Label": "malawi",
+                  "Type": "Text",
+                  "Value": "malawi"
+                },
+                {
+                  "Label": "mali",
+                  "Type": "Text",
+                  "Value": "mali"
+                },
+                {
+                  "Label": "mauritania",
+                  "Type": "Text",
+                  "Value": "mauritania"
+                },
+                {
+                  "Label": "mauritius",
+                  "Type": "Text",
+                  "Value": "mauritius"
+                },
+                {
+                  "Label": "mayotte",
+                  "Type": "Text",
+                  "Value": "mayotte"
+                },
+                {
+                  "Label": "morocco",
+                  "Type": "Text",
+                  "Value": "morocco"
+                },
+                {
+                  "Label": "mozambique",
+                  "Type": "Text",
+                  "Value": "mozambique"
+                },
+                {
+                  "Label": "namibia",
+                  "Type": "Text",
+                  "Value": "namibia"
+                },
+                {
+                  "Label": "niger",
+                  "Type": "Text",
+                  "Value": "niger"
+                },
+                {
+                  "Label": "nigeria",
+                  "Type": "Text",
+                  "Value": "nigeria"
+                },
+                {
+                  "Label": "reunion",
+                  "Type": "Text",
+                  "Value": "reunion"
+                },
+                {
+                  "Label": "rwanda",
+                  "Type": "Text",
+                  "Value": "rwanda"
+                },
+                {
+                  "Label": "saint helena",
+                  "Type": "Text",
+                  "Value": "saint helena"
+                },
+                {
+                  "Label": "sao tome and principe",
+                  "Type": "Text",
+                  "Value": "sao tome and principe"
+                },
+                {
+                  "Label": "senegal",
+                  "Type": "Text",
+                  "Value": "senegal"
+                },
+                {
+                  "Label": "seychelles",
+                  "Type": "Text",
+                  "Value": "seychelles"
+                },
+                {
+                  "Label": "sierra leone",
+                  "Type": "Text",
+                  "Value": "sierra leone"
+                },
+                {
+                  "Label": "somalia",
+                  "Type": "Text",
+                  "Value": "somalia"
+                },
+                {
+                  "Label": "south africa",
+                  "Type": "Text",
+                  "Value": "south africa"
+                },
+                {
+                  "Label": "south sudan",
+                  "Type": "Text",
+                  "Value": "south sudan"
+                },
+                {
+                  "Label": "sudan",
+                  "Type": "Text",
+                  "Value": "sudan"
+                },
+                {
+                  "Label": "tanzania",
+                  "Type": "Text",
+                  "Value": "tanzania"
+                },
+                {
+                  "Label": "togo",
+                  "Type": "Text",
+                  "Value": "togo"
+                },
+                {
+                  "Label": "tunisia",
+                  "Type": "Text",
+                  "Value": "tunisia"
+                },
+                {
+                  "Label": "uganda",
+                  "Type": "Text",
+                  "Value": "uganda"
+                },
+                {
+                  "Label": "western sahara",
+                  "Type": "Text",
+                  "Value": "western sahara"
+                },
+                {
+                  "Label": "zambia",
+                  "Type": "Text",
+                  "Value": "zambia"
+                },
+                {
+                  "Label": "zimbabwe",
+                  "Type": "Text",
+                  "Value": "zimbabwe"
+                }
+              ],
+              "FieldGroupIsPrimaryKey": true
+            },
+            "Sites": {
+              "FieldGroupKey": "$.GroupFields[*].SiteAndGeoreferencing.GroupFields[*].Sites",
+              "FieldGroupName": "sites",
+              "FieldGroupMaxEntries": 1,
+              "GroupFields": [
+                {
+                  "SiteName": {
+                    "FieldGroupKey": "$.GroupFields[*].SiteAndGeoreferencing.GroupFields[*].Sites.GroupFields[*].SiteName",
+                    "FieldGroupName": "site name",
+                    "FieldGroupMaxEntries": 0,
+                    "FieldDataType": "Text",
+                    "FieldUi": "Text",
+                    "FieldGroupIsPrimaryKey": true
+                  },
+                  "Coordinates": {
+                    "FieldGroupKey": "$.GroupFields[*].SiteAndGeoreferencing.GroupFields[*].Sites.GroupFields[*].Coordinates",
+                    "FieldGroupName": "coordinates",
+                    "FieldGroupMaxEntries": 0,
+                    "GroupFields": [
+                      {
+                        "Latitude": {
+                          "FieldGroupKey": "$.GroupFields[*].SiteAndGeoreferencing.GroupFields[*].Sites.GroupFields[*].Coordinates.GroupFields[*].Latitude",
+                          "FieldGroupName": "latitude",
+                          "FieldGroupMaxEntries": 1,
+                          "FieldDataType": "Number",
+                          "FieldUi": "Number"
+                        },
+                        "Longitude": {
+                          "FieldGroupKey": "$.GroupFields[*].SiteAndGeoreferencing.GroupFields[*].Sites.GroupFields[*].Coordinates.GroupFields[*].Longitude",
+                          "FieldGroupName": "longitude",
+                          "FieldGroupMaxEntries": 1,
+                          "FieldDataType": "Number",
+                          "FieldUi": "Number"
+                        }
+                      }
+                    ],
+                    "GroupReadOrderOfFields": [
+                      "Latitude",
+                      "Longitude"
+                    ],
+                    "FieldGroupViewValuesInSeparateColumns": true,
+                    "FieldGroupViewMaxNoOfValuesInSeparateColumns": 8
+                  },
+                  "AdminLevels": {
+                    "FieldGroupKey": "$.GroupFields[*].SiteAndGeoreferencing.GroupFields[*].Sites.GroupFields[*].AdminLevels",
+                    "FieldGroupName": "admin levels",
+                    "FieldGroupMaxEntries": 2,
+                    "FieldDataType": "Text",
+                    "FieldUi": "Text",
+                    "FieldGroupViewMaxNoOfValuesInSeparateColumns": 2,
+                    "FieldGroupViewValuesInSeparateColumns": true,
+                    "FieldViewValuesInSeparateColumnsHeaderFormat": "admin level #[*]"
+                  },
+                  "Species": {
+                    "FieldGroupKey": "$.GroupFields[*].SiteAndGeoreferencing.GroupFields[*].Sites.GroupFields[*].Species",
+                    "FieldGroupName": "species",
+                    "FieldGroupMaxEntries": 0,
+                    "GroupFields": [
+                      {
+                        "Name": {
+                          "FieldGroupKey": "$.GroupFields[*].SiteAndGeoreferencing.GroupFields[*].Sites.GroupFields[*].Species.GroupFields[*].Name",
+                          "FieldGroupName": "name",
+                          "FieldGroupMaxEntries": 1,
+                          "FieldDataType": "Text",
+                          "FieldUi": "Select",
+                          "FieldSelectOptions": [
+                            {
+                              "Label": "gambiae complex",
+                              "Type": "Text",
+                              "Value": "gambiae complex"
+                            },
+                            {
+                              "Label": "arabiensis",
+                              "Type": "Text",
+                              "Value": "arabiensis"
+                            },
+                            {
+                              "Label": "coluzzii_gambiae_m form",
+                              "Type": "Text",
+                              "Value": "coluzzii_gambiae_m form"
+                            },
+                            {
+                              "Label": "gambiae_s form_m form",
+                              "Type": "Text",
+                              "Value": "gambiae_s form_m form"
+                            },
+                            {
+                              "Label": "gambiae_s form",
+                              "Type": "Text",
+                              "Value": "gambiae_s form"
+                            },
+                            {
+                              "Label": "melas",
+                              "Type": "Text",
+                              "Value": "melas"
+                            },
+                            {
+                              "Label": "merus",
+                              "Type": "Text",
+                              "Value": "merus"
+                            },
+                            {
+                              "Label": "quadriannulatus",
+                              "Type": "Text",
+                              "Value": "quadriannulatus"
+                            },
+                            {
+                              "Label": "nili complex",
+                              "Type": "Text",
+                              "Value": "nili complex"
+                            },
+                            {
+                              "Label": "carnevalei",
+                              "Type": "Text",
+                              "Value": "carnevalei"
+                            },
+                            {
+                              "Label": "nili",
+                              "Type": "Text",
+                              "Value": "nili"
+                            },
+                            {
+                              "Label": "funestus complex",
+                              "Type": "Text",
+                              "Value": "funestus complex"
+                            },
+                            {
+                              "Label": "funestus",
+                              "Type": "Text",
+                              "Value": "funestus"
+                            },
+                            {
+                              "Label": "funestus-like",
+                              "Type": "Text",
+                              "Value": "funestus-like"
+                            },
+                            {
+                              "Label": "amharicus",
+                              "Type": "Text",
+                              "Value": "amharicus"
+                            },
+                            {
+                              "Label": "ardensis",
+                              "Type": "Text",
+                              "Value": "ardensis"
+                            },
+                            {
+                              "Label": "argenteolobatus",
+                              "Type": "Text",
+                              "Value": "argenteolobatus"
+                            },
+                            {
+                              "Label": "aruni",
+                              "Type": "Text",
+                              "Value": "aruni"
+                            },
+                            {
+                              "Label": "austenii",
+                              "Type": "Text",
+                              "Value": "austenii"
+                            },
+                            {
+                              "Label": "azaniae",
+                              "Type": "Text",
+                              "Value": "azaniae"
+                            },
+                            {
+                              "Label": "azevedoi",
+                              "Type": "Text",
+                              "Value": "azevedoi"
+                            },
+                            {
+                              "Label": "barberellus",
+                              "Type": "Text",
+                              "Value": "barberellus"
+                            },
+                            {
+                              "Label": "berghei",
+                              "Type": "Text",
+                              "Value": "berghei"
+                            },
+                            {
+                              "Label": "bervoetsi",
+                              "Type": "Text",
+                              "Value": "bervoetsi"
+                            },
+                            {
+                              "Label": "brohieri",
+                              "Type": "Text",
+                              "Value": "brohieri"
+                            },
+                            {
+                              "Label": "brucei",
+                              "Type": "Text",
+                              "Value": "brucei"
+                            },
+                            {
+                              "Label": "brumpti",
+                              "Type": "Text",
+                              "Value": "brumpti"
+                            },
+                            {
+                              "Label": "brunnipes",
+                              "Type": "Text",
+                              "Value": "brunnipes"
+                            },
+                            {
+                              "Label": "buxtoni",
+                              "Type": "Text",
+                              "Value": "buxtoni"
+                            },
+                            {
+                              "Label": "bwambae",
+                              "Type": "Text",
+                              "Value": "bwambae"
+                            },
+                            {
+                              "Label": "caliginosus",
+                              "Type": "Text",
+                              "Value": "caliginosus"
+                            },
+                            {
+                              "Label": "cameroni",
+                              "Type": "Text",
+                              "Value": "cameroni"
+                            },
+                            {
+                              "Label": "caroni",
+                              "Type": "Text",
+                              "Value": "caroni"
+                            },
+                            {
+                              "Label": "carteri",
+                              "Type": "Text",
+                              "Value": "carteri"
+                            },
+                            {
+                              "Label": "christyi",
+                              "Type": "Text",
+                              "Value": "christyi"
+                            },
+                            {
+                              "Label": "cinctus",
+                              "Type": "Text",
+                              "Value": "cinctus"
+                            },
+                            {
+                              "Label": "cinereus",
+                              "Type": "Text",
+                              "Value": "cinereus"
+                            },
+                            {
+                              "Label": "comorensis",
+                              "Type": "Text",
+                              "Value": "comorensis"
+                            },
+                            {
+                              "Label": "concolor",
+                              "Type": "Text",
+                              "Value": "concolor"
+                            },
+                            {
+                              "Label": "confusus",
+                              "Type": "Text",
+                              "Value": "confusus"
+                            },
+                            {
+                              "Label": "coustani complex",
+                              "Type": "Text",
+                              "Value": "coustani complex"
+                            },
+                            {
+                              "Label": "coustani",
+                              "Type": "Text",
+                              "Value": "coustani"
+                            },
+                            {
+                              "Label": "cristipalpis",
+                              "Type": "Text",
+                              "Value": "cristipalpis"
+                            },
+                            {
+                              "Label": "crypticus",
+                              "Type": "Text",
+                              "Value": "crypticus"
+                            },
+                            {
+                              "Label": "culicifacies complex",
+                              "Type": "Text",
+                              "Value": "culicifacies complex"
+                            },
+                            {
+                              "Label": "culicifacies",
+                              "Type": "Text",
+                              "Value": "culicifacies"
+                            },
+                            {
+                              "Label": "cydippis",
+                              "Type": "Text",
+                              "Value": "cydippis"
+                            },
+                            {
+                              "Label": "dancalicus",
+                              "Type": "Text",
+                              "Value": "dancalicus"
+                            },
+                            {
+                              "Label": "daudi",
+                              "Type": "Text",
+                              "Value": "daudi"
+                            },
+                            {
+                              "Label": "deemingi",
+                              "Type": "Text",
+                              "Value": "deemingi"
+                            },
+                            {
+                              "Label": "demeilloni",
+                              "Type": "Text",
+                              "Value": "demeilloni"
+                            },
+                            {
+                              "Label": "distinctus",
+                              "Type": "Text",
+                              "Value": "distinctus"
+                            },
+                            {
+                              "Label": "domicola",
+                              "Type": "Text",
+                              "Value": "domicola"
+                            },
+                            {
+                              "Label": "dthali",
+                              "Type": "Text",
+                              "Value": "dthali"
+                            },
+                            {
+                              "Label": "dualaensis",
+                              "Type": "Text",
+                              "Value": "dualaensis"
+                            },
+                            {
+                              "Label": "dureni",
+                              "Type": "Text",
+                              "Value": "dureni"
+                            },
+                            {
+                              "Label": "eouzani",
+                              "Type": "Text",
+                              "Value": "eouzani"
+                            },
+                            {
+                              "Label": "erepens",
+                              "Type": "Text",
+                              "Value": "erepens"
+                            },
+                            {
+                              "Label": "erythraeus",
+                              "Type": "Text",
+                              "Value": "erythraeus"
+                            },
+                            {
+                              "Label": "ethiopicus",
+                              "Type": "Text",
+                              "Value": "ethiopicus"
+                            },
+                            {
+                              "Label": "faini",
+                              "Type": "Text",
+                              "Value": "faini"
+                            },
+                            {
+                              "Label": "flavicosta",
+                              "Type": "Text",
+                              "Value": "flavicosta"
+                            },
+                            {
+                              "Label": "fontenillei",
+                              "Type": "Text",
+                              "Value": "fontenillei"
+                            },
+                            {
+                              "Label": "fontinalis",
+                              "Type": "Text",
+                              "Value": "fontinalis"
+                            },
+                            {
+                              "Label": "freetownensis",
+                              "Type": "Text",
+                              "Value": "freetownensis"
+                            },
+                            {
+                              "Label": "fuscicolor",
+                              "Type": "Text",
+                              "Value": "fuscicolor"
+                            },
+                            {
+                              "Label": "fuscivenosus",
+                              "Type": "Text",
+                              "Value": "fuscivenosus"
+                            },
+                            {
+                              "Label": "gabonensis",
+                              "Type": "Text",
+                              "Value": "gabonensis"
+                            },
+                            {
+                              "Label": "garnhami",
+                              "Type": "Text",
+                              "Value": "garnhami"
+                            },
+                            {
+                              "Label": "gibbinsi",
+                              "Type": "Text",
+                              "Value": "gibbinsi"
+                            },
+                            {
+                              "Label": "grassei",
+                              "Type": "Text",
+                              "Value": "grassei"
+                            },
+                            {
+                              "Label": "grenieri",
+                              "Type": "Text",
+                              "Value": "grenieri"
+                            },
+                            {
+                              "Label": "griveaudi",
+                              "Type": "Text",
+                              "Value": "griveaudi"
+                            },
+                            {
+                              "Label": "hamoni",
+                              "Type": "Text",
+                              "Value": "hamoni"
+                            },
+                            {
+                              "Label": "hancocki",
+                              "Type": "Text",
+                              "Value": "hancocki"
+                            },
+                            {
+                              "Label": "hargreavesi",
+                              "Type": "Text",
+                              "Value": "hargreavesi"
+                            },
+                            {
+                              "Label": "harperi",
+                              "Type": "Text",
+                              "Value": "harperi"
+                            },
+                            {
+                              "Label": "hervyi",
+                              "Type": "Text",
+                              "Value": "hervyi"
+                            },
+                            {
+                              "Label": "hughi",
+                              "Type": "Text",
+                              "Value": "hughi"
+                            },
+                            {
+                              "Label": "implexus",
+                              "Type": "Text",
+                              "Value": "implexus"
+                            },
+                            {
+                              "Label": "jebudensis",
+                              "Type": "Text",
+                              "Value": "jebudensis"
+                            },
+                            {
+                              "Label": "keniensis",
+                              "Type": "Text",
+                              "Value": "keniensis"
+                            },
+                            {
+                              "Label": "kingi",
+                              "Type": "Text",
+                              "Value": "kingi"
+                            },
+                            {
+                              "Label": "kosiensis",
+                              "Type": "Text",
+                              "Value": "kosiensis"
+                            },
+                            {
+                              "Label": "lacani",
+                              "Type": "Text",
+                              "Value": "lacani"
+                            },
+                            {
+                              "Label": "leesoni",
+                              "Type": "Text",
+                              "Value": "leesoni"
+                            },
+                            {
+                              "Label": "letabensis",
+                              "Type": "Text",
+                              "Value": "letabensis"
+                            },
+                            {
+                              "Label": "listeri",
+                              "Type": "Text",
+                              "Value": "listeri"
+                            },
+                            {
+                              "Label": "lloreti",
+                              "Type": "Text",
+                              "Value": "lloreti"
+                            },
+                            {
+                              "Label": "longipalpis",
+                              "Type": "Text",
+                              "Value": "longipalpis"
+                            },
+                            {
+                              "Label": "lounibosi",
+                              "Type": "Text",
+                              "Value": "lounibosi"
+                            },
+                            {
+                              "Label": "lovettae",
+                              "Type": "Text",
+                              "Value": "lovettae"
+                            },
+                            {
+                              "Label": "machardyi",
+                              "Type": "Text",
+                              "Value": "machardyi"
+                            },
+                            {
+                              "Label": "maculipalpis",
+                              "Type": "Text",
+                              "Value": "maculipalpis"
+                            },
+                            {
+                              "Label": "maliensis",
+                              "Type": "Text",
+                              "Value": "maliensis"
+                            },
+                            {
+                              "Label": "marshallii complex",
+                              "Type": "Text",
+                              "Value": "marshallii complex"
+                            },
+                            {
+                              "Label": "marshallii",
+                              "Type": "Text",
+                              "Value": "marshallii"
+                            },
+                            {
+                              "Label": "mascarensis",
+                              "Type": "Text",
+                              "Value": "mascarensis"
+                            },
+                            {
+                              "Label": "millecampsi",
+                              "Type": "Text",
+                              "Value": "millecampsi"
+                            },
+                            {
+                              "Label": "milloti",
+                              "Type": "Text",
+                              "Value": "milloti"
+                            },
+                            {
+                              "Label": "mortiauxi",
+                              "Type": "Text",
+                              "Value": "mortiauxi"
+                            },
+                            {
+                              "Label": "moucheti",
+                              "Type": "Text",
+                              "Value": "moucheti"
+                            },
+                            {
+                              "Label": "mousinhoi",
+                              "Type": "Text",
+                              "Value": "mousinhoi"
+                            },
+                            {
+                              "Label": "multicolor",
+                              "Type": "Text",
+                              "Value": "multicolor"
+                            },
+                            {
+                              "Label": "multicinctus",
+                              "Type": "Text",
+                              "Value": "multicinctus"
+                            },
+                            {
+                              "Label": "murphyi",
+                              "Type": "Text",
+                              "Value": "murphyi"
+                            },
+                            {
+                              "Label": "namibiensis",
+                              "Type": "Text",
+                              "Value": "namibiensis"
+                            },
+                            {
+                              "Label": "natalensis",
+                              "Type": "Text",
+                              "Value": "natalensis"
+                            },
+                            {
+                              "Label": "njombiensis",
+                              "Type": "Text",
+                              "Value": "njombiensis"
+                            },
+                            {
+                              "Label": "notleyi",
+                              "Type": "Text",
+                              "Value": "notleyi"
+                            },
+                            {
+                              "Label": "obscurus",
+                              "Type": "Text",
+                              "Value": "obscurus"
+                            },
+                            {
+                              "Label": "okuensis",
+                              "Type": "Text",
+                              "Value": "okuensis"
+                            },
+                            {
+                              "Label": "ovengensis",
+                              "Type": "Text",
+                              "Value": "ovengensis"
+                            },
+                            {
+                              "Label": "paludis",
+                              "Type": "Text",
+                              "Value": "paludis"
+                            },
+                            {
+                              "Label": "parensis",
+                              "Type": "Text",
+                              "Value": "parensis"
+                            },
+                            {
+                              "Label": "pauliani",
+                              "Type": "Text",
+                              "Value": "pauliani"
+                            },
+                            {
+                              "Label": "pharoensis",
+                              "Type": "Text",
+                              "Value": "pharoensis"
+                            },
+                            {
+                              "Label": "pretoriensis",
+                              "Type": "Text",
+                              "Value": "pretoriensis"
+                            },
+                            {
+                              "Label": "radama",
+                              "Type": "Text",
+                              "Value": "radama"
+                            },
+                            {
+                              "Label": "rageaui",
+                              "Type": "Text",
+                              "Value": "rageaui"
+                            },
+                            {
+                              "Label": "ranci",
+                              "Type": "Text",
+                              "Value": "ranci"
+                            },
+                            {
+                              "Label": "rhodesiensis",
+                              "Type": "Text",
+                              "Value": "rhodesiensis"
+                            },
+                            {
+                              "Label": "rivulorum complex",
+                              "Type": "Text",
+                              "Value": "rivulorum complex"
+                            },
+                            {
+                              "Label": "rivulorum",
+                              "Type": "Text",
+                              "Value": "rivulorum"
+                            },
+                            {
+                              "Label": "rivulorum-like",
+                              "Type": "Text",
+                              "Value": "rivulorum-like"
+                            },
+                            {
+                              "Label": "rodhaini",
+                              "Type": "Text",
+                              "Value": "rodhaini"
+                            },
+                            {
+                              "Label": "roubaudi",
+                              "Type": "Text",
+                              "Value": "roubaudi"
+                            },
+                            {
+                              "Label": "ruarinus",
+                              "Type": "Text",
+                              "Value": "ruarinus"
+                            },
+                            {
+                              "Label": "rufipes",
+                              "Type": "Text",
+                              "Value": "rufipes"
+                            },
+                            {
+                              "Label": "salbaii",
+                              "Type": "Text",
+                              "Value": "salbaii"
+                            },
+                            {
+                              "Label": "schwetzi",
+                              "Type": "Text",
+                              "Value": "schwetzi"
+                            },
+                            {
+                              "Label": "seretsei",
+                              "Type": "Text",
+                              "Value": "seretsei"
+                            },
+                            {
+                              "Label": "sergentii",
+                              "Type": "Text",
+                              "Value": "sergentii"
+                            },
+                            {
+                              "Label": "seydeli",
+                              "Type": "Text",
+                              "Value": "seydeli"
+                            },
+                            {
+                              "Label": "smithii",
+                              "Type": "Text",
+                              "Value": "smithii"
+                            },
+                            {
+                              "Label": "somalicus",
+                              "Type": "Text",
+                              "Value": "somalicus"
+                            },
+                            {
+                              "Label": "squamosus",
+                              "Type": "Text",
+                              "Value": "squamosus"
+                            },
+                            {
+                              "Label": "stephensi",
+                              "Type": "Text",
+                              "Value": "stephensi"
+                            },
+                            {
+                              "Label": "swahilicus",
+                              "Type": "Text",
+                              "Value": "swahilicus"
+                            },
+                            {
+                              "Label": "symesi",
+                              "Type": "Text",
+                              "Value": "symesi"
+                            },
+                            {
+                              "Label": "tchekedii",
+                              "Type": "Text",
+                              "Value": "tchekedii"
+                            },
+                            {
+                              "Label": "tenebrosus",
+                              "Type": "Text",
+                              "Value": "tenebrosus"
+                            },
+                            {
+                              "Label": "theileri",
+                              "Type": "Text",
+                              "Value": "theileri"
+                            },
+                            {
+                              "Label": "turkhudi",
+                              "Type": "Text",
+                              "Value": "turkhudi"
+                            },
+                            {
+                              "Label": "vaneedeni",
+                              "Type": "Text",
+                              "Value": "vaneedeni"
+                            },
+                            {
+                              "Label": "vanhoofi",
+                              "Type": "Text",
+                              "Value": "vanhoofi"
+                            },
+                            {
+                              "Label": "vernus",
+                              "Type": "Text",
+                              "Value": "vernus"
+                            },
+                            {
+                              "Label": "vinckei",
+                              "Type": "Text",
+                              "Value": "vinckei"
+                            },
+                            {
+                              "Label": "walravensi",
+                              "Type": "Text",
+                              "Value": "walravensi"
+                            },
+                            {
+                              "Label": "wellcomei",
+                              "Type": "Text",
+                              "Value": "wellcomei"
+                            },
+                            {
+                              "Label": "wilsoni",
+                              "Type": "Text",
+                              "Value": "wilsoni"
+                            },
+                            {
+                              "Label": "ziemanni",
+                              "Type": "Text",
+                              "Value": "ziemanni"
+                            }
+                          ],
+                          "FieldGroupIsPrimaryKey": true
+                        },
+                        "DnaSeq": {
+                          "FieldGroupKey": "$.GroupFields[*].SiteAndGeoreferencing.GroupFields[*].Sites.GroupFields[*].Species.GroupFields[*].DnaSeq",
+                          "FieldGroupName": "dna seq",
+                          "FieldGroupMaxEntries": 0,
+                          "FieldDataType": "Boolean",
+                          "FieldUi": "Checkbox",
+                          "FieldMultipleValuesJoinSymbol": "||"
+                        }
+                      }
+                    ],
+                    "GroupReadOrderOfFields": [
+                      "Name",
+                      "DnaSeq"
+                    ]
+                  }
+                }
+              ],
+              "GroupReadOrderOfFields": [
+                "SiteName",
+                "Coordinates",
+                "AdminLevels",
+                "Species"
+              ]
+            }
+          }
+        ],
+        "GroupReadOrderOfFields": [
+          "Country",
+          "Sites"
+        ]
+      },
+      "DnaSeq2": {
+        "FieldGroupKey": "$.GroupFields[*].DnaSeq2",
+        "FieldGroupName": "dna seq2",
+        "FieldGroupMaxEntries": 0,
+        "FieldDataType": "Boolean",
+        "FieldUi": "Checkbox",
+        "FieldCheckboxValueIfTrue": {
+          "Type": "Text",
+          "Value": "iky"
+        },
+        "FieldCheckboxValueIfFalse": {
+          "Type": "Text",
+          "Value": "ovn"
+        },
+        "FieldCheckboxValuesUseInStorage": true,
+        "FieldMultipleValuesJoinSymbol": "||"
+      },
+      "Notes": {
+        "FieldGroupKey": "$.GroupFields[*].Notes",
+        "FieldGroupName": "notes",
+        "FieldGroupMaxEntries": 0,
+        "FieldDataType": "Text",
+        "FieldUi": "TextArea",
+        "FieldMultipleValuesJoinSymbol": "||"
+      }
+    }
+  ],
+  "GroupReadOrderOfFields": [
+    "SourceId",
+    "Bio",
+    "Occ",
+    "DateOfPublication",
+    "SiteAndGeoreferencing",
+    "DnaSeq2",
+    "Notes"
+  ]
+}

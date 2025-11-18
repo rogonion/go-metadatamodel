@@ -1,0 +1,912 @@
+[
+  {
+    "SourceId": [
+      1
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "Notes": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      null,
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "morocco"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  -8.2046
+                ],
+                "Longitude": [
+                  -24.6307
+                ]
+              },
+              {
+                "Latitude": [
+                  13.7997
+                ],
+                "Longitude": [
+                  -21.6669
+                ]
+              },
+              {
+                "Latitude": [
+                  -21.6212
+                ],
+                "Longitude": [
+                  -9.0494
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "Langata"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      2
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "dr congo"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  -1.728
+                ],
+                "Longitude": [
+                  16.9234
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "Kasarani",
+              "milimani"
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "amharicus"
+                ],
+                "DnaSeq": [
+                  false,
+                  true,
+                  false
+                ]
+              },
+              {
+                "Name": [
+                  "distinctus"
+                ],
+                "DnaSeq": [
+                  false,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  false,
+                  true,
+                  false,
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      3
+    ],
+    "Bio": [
+      "no"
+    ],
+    "Occ": [
+      "yes"
+    ],
+    "DnaSeq2": [
+      "iky",
+      "ovn",
+      "ovn",
+      "ovn",
+      "iky",
+      "iky",
+      "iky",
+      "iky",
+      "ovn",
+      "iky",
+      "ovn",
+      "ovn",
+      "ovn",
+      "ovn",
+      "iky",
+      "iky",
+      "iky",
+      "ovn",
+      "ovn",
+      "iky"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "reunion"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  20.9419
+                ],
+                "Longitude": [
+                  16.7119
+                ]
+              },
+              {
+                "Latitude": [
+                  29.5668
+                ],
+                "Longitude": [
+                  -20.088
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "Ruai"
+            ]
+          },
+          {
+            "SiteName": [
+              "Karuguru"
+            ],
+            "AdminLevels": [
+              "Kasarani",
+              "Race course"
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "ardensis"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      4
+    ],
+    "Bio": [
+      "no"
+    ],
+    "DateOfPublication": [
+      "2002-09-08T17:15:37Z"
+    ],
+    "Notes": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      null,
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "namibia"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  -1.7408
+                ],
+                "Longitude": [
+                  28.2045
+                ]
+              },
+              {
+                "Latitude": [
+                  -15.6575
+                ],
+                "Longitude": [
+                  1.025
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      5
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "cabo verde"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  18.8166
+                ],
+                "Longitude": [
+                  -10.4217
+                ]
+              },
+              {
+                "Latitude": [
+                  20.3061
+                ],
+                "Longitude": [
+                  12.7214
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani"
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "squamosus"
+                ],
+                "DnaSeq": [
+                  true,
+                  true,
+                  false
+                ]
+              },
+              {
+                "Name": [
+                  "cinctus"
+                ],
+                "DnaSeq": [
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      6
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "Occ": [
+      "yes"
+    ],
+    "DnaSeq2": [
+      "iky",
+      "ovn",
+      "ovn",
+      "iky",
+      "ovn",
+      "iky",
+      "ovn",
+      "ovn",
+      "iky",
+      "iky",
+      "ovn",
+      "ovn",
+      "iky",
+      "iky",
+      "iky"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "morocco"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  -9.0436
+                ],
+                "Longitude": [
+                  -2.7302
+                ]
+              },
+              {
+                "Latitude": [
+                  -3.8762
+                ],
+                "Longitude": [
+                  -1.777
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "Ruai"
+            ]
+          },
+          {
+            "SiteName": [
+              "Karuguru"
+            ],
+            "AdminLevels": [
+              "milimani",
+              "milimani"
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "nili complex"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      7
+    ],
+    "Bio": [
+      "no"
+    ],
+    "Notes": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      null,
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "namibia"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  17.7088
+                ],
+                "Longitude": [
+                  -17.7084
+                ]
+              },
+              {
+                "Latitude": [
+                  -24.316
+                ],
+                "Longitude": [
+                  -19.1023
+                ]
+              },
+              {
+                "Latitude": [
+                  -11.2335
+                ],
+                "Longitude": [
+                  -18.3976
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "Kasarani",
+              "Kasarani",
+              "milimani"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      8
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "burkina faso"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  -9.0308
+                ],
+                "Longitude": [
+                  -28.8475
+                ]
+              },
+              {
+                "Latitude": [
+                  2.6515
+                ],
+                "Longitude": [
+                  22.0121
+                ]
+              },
+              {
+                "Latitude": [
+                  -28.2721
+                ],
+                "Longitude": [
+                  -15.6888
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              "Kasarani",
+              "Ruai"
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "schwetzi"
+                ],
+                "DnaSeq": [
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+                ]
+              },
+              {
+                "Name": [
+                  "nili"
+                ],
+                "DnaSeq": [
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  false,
+                  true,
+                  true,
+                  false
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      9
+    ],
+    "Bio": [
+      "no"
+    ],
+    "Occ": [
+      "yes"
+    ],
+    "DnaSeq2": [
+      "ovn",
+      "ovn",
+      "iky",
+      "ovn",
+      "ovn",
+      "ovn",
+      "iky",
+      "ovn",
+      "iky",
+      "ovn",
+      "ovn",
+      null,
+      "iky",
+      "ovn",
+      "iky",
+      "iky"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "gabon"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  -14.7368
+                ],
+                "Longitude": [
+                  -23.7381
+                ]
+              },
+              {
+                "Latitude": [
+                  -1.7481
+                ],
+                "Longitude": [
+                  -2.6738
+                ]
+              },
+              {
+                "Latitude": [
+                  -1.8741
+                ],
+                "Longitude": [
+                  26.3115
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "Ruai",
+              "Kasarani",
+              "Kasarani"
+            ]
+          },
+          {
+            "SiteName": [
+              "Karuguru"
+            ],
+            "AdminLevels": [
+              "Kasarani",
+              "Race course",
+              "Kasarani"
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "rufipes"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "Country": [
+          "botswana"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  -17.6599
+                ],
+                "Longitude": [
+                  19.4627
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "Ruai"
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "rufipes"
+                ],
+                "DnaSeq": [
+                  false,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  false
+                ]
+              },
+              {
+                "Name": [
+                  "demeilloni"
+                ],
+                "DnaSeq": [
+                  true,
+                  true,
+                  false,
+                  true
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      10
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "Notes": [
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      null,
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "madagascar"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  -28.7752
+                ],
+                "Longitude": [
+                  20.2789
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "Kasarani",
+              "Kasarani",
+              "milimani"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      11
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "eritrea"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  2.6513
+                ],
+                "Longitude": [
+                  -1.7824
+                ]
+              },
+              {
+                "Latitude": [
+                  -13.9102
+                ],
+                "Longitude": [
+                  21.2844
+                ]
+              },
+              {
+                "Latitude": [
+                  21.8488
+                ],
+                "Longitude": [
+                  13.7915
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani",
+              "milimani"
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "nili"
+                ],
+                "DnaSeq": [
+                  true,
+                  false,
+                  true,
+                  false,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true,
+                  false,
+                  true,
+                  true
+                ]
+              },
+              {
+                "Name": [
+                  "sergentii"
+                ],
+                "DnaSeq": [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  true,
+                  false
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "SourceId": [
+      12
+    ],
+    "Bio": [
+      "yes"
+    ],
+    "Occ": [
+      "no"
+    ],
+    "DnaSeq2": [
+      "ovn",
+      "ovn",
+      "ovn",
+      "ovn",
+      "iky",
+      "ovn",
+      "iky",
+      "iky",
+      "iky",
+      "ovn",
+      "ovn",
+      "ovn",
+      "ovn",
+      "iky",
+      "iky",
+      "ovn",
+      "ovn",
+      "iky",
+      "ovn",
+      "iky"
+    ],
+    "SiteAndGeoreferencing": [
+      {
+        "Country": [
+          "tunisia"
+        ],
+        "Sites": [
+          {
+            "SiteName": [
+              "Nakuru"
+            ],
+            "Coordinates": [
+              {
+                "Latitude": [
+                  -17.5583
+                ],
+                "Longitude": [
+                  -20.7621
+                ]
+              }
+            ],
+            "AdminLevels": [
+              "milimani"
+            ]
+          },
+          {
+            "SiteName": [
+              "Karuguru"
+            ],
+            "AdminLevels": [
+              "milimani"
+            ],
+            "Species": [
+              {
+                "Name": [
+                  "maculipalpis"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
