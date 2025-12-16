@@ -25,7 +25,7 @@ func (n *GetColumnFields) Get(metadataModel any) (*ColumnFields, error) {
 
 	var forEachError error
 	iter.ForEach(metadataModel, func(fieldGroup gojsoncore.JsonObject) (bool, bool) {
-		if (n.skip.IsValid() && n.skip.Match(fieldGroup)) || (n.add.IsValid() && !n.add.Match(fieldGroup)) {
+		if (n.skip.IsValid() && n.skip.FirstMatch(fieldGroup)) || (n.add.IsValid() && !n.add.FirstMatch(fieldGroup)) {
 			return false, false
 		}
 
@@ -44,8 +44,8 @@ func (n *GetColumnFields) Get(metadataModel any) (*ColumnFields, error) {
 				return false, true
 			}
 
-			tableCollectionName, err := gojsoncore.As[string](fieldGroup[core.DatabaseTableCollectionName])
-			if err != nil {
+			tableCollectionName, ok := fieldGroup[core.DatabaseTableCollectionName].(string)
+			if !ok {
 				return false, true
 			}
 

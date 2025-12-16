@@ -1,6 +1,7 @@
 package core
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 
@@ -19,12 +20,12 @@ func TestCore_JsonPathToValue(t *testing.T) {
 		res, err := jptv.Get(testData.Path, testData.ArrayIndexes)
 
 		if err != nil && testData.LogErrorsIfExpectedNotOk {
-			t.Error(err)
+			t.Error(testData.TestTitle, "\n", "Error=", err)
 		}
 
 		if reflect.DeepEqual(res, testData.Expected) != testData.ExpectedOk {
 			t.Error(
-				"Test Title:", testData.TestTitle, "\n",
+				testData.TestTitle, "\n",
 				"expected DeepEqual result to be equal to ExpectedEqual", "\n",
 				"testData.Path=", testData.Path, "\n",
 				"testData.Expected=", testData.Expected, "\n",
@@ -46,8 +47,12 @@ type JsonPathToValueData struct {
 }
 
 func JsonPathToValueTestData(yield func(data *JsonPathToValueData) bool) {
+	testCaseIndex := 1
 	if !yield(
 		&JsonPathToValueData{
+			TestData: internal.TestData{
+				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+			},
 			Path:                   "$.GroupFields[*].Group1.GroupFields[*].Group1Field",
 			RemoveGroupFields:      true,
 			SourceOfValueIsAnArray: true,
@@ -59,8 +64,12 @@ func JsonPathToValueTestData(yield func(data *JsonPathToValueData) bool) {
 		return
 	}
 
+	testCaseIndex++
 	if !yield(
 		&JsonPathToValueData{
+			TestData: internal.TestData{
+				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+			},
 			Path:              "$.GroupFields[*].Group1.GroupFields[*].Group1Field",
 			RemoveGroupFields: true,
 			ExpectedOk:        true,
@@ -71,8 +80,12 @@ func JsonPathToValueTestData(yield func(data *JsonPathToValueData) bool) {
 		return
 	}
 
+	testCaseIndex++
 	if !yield(
 		&JsonPathToValueData{
+			TestData: internal.TestData{
+				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+			},
 			Path:         "$.GroupFields[*].Group1.GroupFields[*].Group1Field",
 			ExpectedOk:   true,
 			ArrayIndexes: []int{1, 2},
@@ -82,8 +95,12 @@ func JsonPathToValueTestData(yield func(data *JsonPathToValueData) bool) {
 		return
 	}
 
+	testCaseIndex++
 	if !yield(
 		&JsonPathToValueData{
+			TestData: internal.TestData{
+				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+			},
 			Path:                   "$.GroupFields[*].Group1.GroupFields[*].Group1Field",
 			RemoveGroupFields:      true,
 			SourceOfValueIsAnArray: true,
@@ -95,8 +112,12 @@ func JsonPathToValueTestData(yield func(data *JsonPathToValueData) bool) {
 		return
 	}
 
+	testCaseIndex++
 	if !yield(
 		&JsonPathToValueData{
+			TestData: internal.TestData{
+				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+			},
 			Path:              "$.GroupFields[*].Group1.GroupFields[*].Group1Field",
 			RemoveGroupFields: true,
 			ExpectedOk:        true,

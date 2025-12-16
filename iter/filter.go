@@ -41,11 +41,9 @@ func Filter(group any, callback FilterCallback) any {
 			fieldGroupProp[core.GroupReadOrderOfFields].(gojsoncore.JsonArray)[fgKeySuffixIndex] = ""
 			delete(fieldGroupProp[core.GroupFields].(gojsoncore.JsonArray)[0].(gojsoncore.JsonObject), fgKeySuffix)
 		} else {
-			if _, err := core.GetGroupFields(fgProperty); err == nil {
-				if _, err := core.GetGroupReadOrderOfFields(fgProperty); err == nil {
-					if !skipFieldGroupPropertyFields {
-						fieldGroupProp[core.GroupFields].(gojsoncore.JsonArray)[0].(gojsoncore.JsonObject)[fgKeySuffix] = Filter(fgProperty, callback)
-					}
+			if core.IsFieldAGroup(fgProperty) {
+				if !skipFieldGroupPropertyFields {
+					fieldGroupProp[core.GroupFields].(gojsoncore.JsonArray)[0].(gojsoncore.JsonObject)[fgKeySuffix] = Filter(fgProperty, callback)
 				}
 			}
 		}
@@ -53,7 +51,7 @@ func Filter(group any, callback FilterCallback) any {
 
 	newGroupReadOrderOfFields := make(gojsoncore.JsonArray, 0)
 	for _, fgJsonPathKeySuffix := range fieldGroupProp[core.GroupReadOrderOfFields].(gojsoncore.JsonArray) {
-		if fgJsonPathKeySuffixString, err := gojsoncore.As[string](fgJsonPathKeySuffix); err == nil && len(fgJsonPathKeySuffixString) > 0 {
+		if fgJsonPathKeySuffixString, ok := fgJsonPathKeySuffix.(string); ok && len(fgJsonPathKeySuffixString) > 0 {
 			newGroupReadOrderOfFields = append(newGroupReadOrderOfFields, fgJsonPathKeySuffixString)
 		}
 	}

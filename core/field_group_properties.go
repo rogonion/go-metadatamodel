@@ -4,35 +4,46 @@ package core
 Metadata Model Field/Group Properties.
 */
 const (
-	FieldGroupJsonPathKey                        string = "FieldGroupJsonPathKey"
-	FieldGroupName                               string = "FieldGroupName"
-	FieldGroupDescription                        string = "FieldGroupDescription"
-	FieldGroupViewTableLockColumn                string = "FieldGroupViewTableLockColumn"
-	FieldGroupIsPrimaryKey                       string = "FieldGroupIsPrimaryKey"
+	FieldGroupJsonPathKey         string = "FieldGroupJsonPathKey"
+	FieldGroupName                string = "FieldGroupName"
+	FieldGroupDescription         string = "FieldGroupDescription"
+	FieldGroupViewTableLockColumn string = "FieldGroupViewTableLockColumn"
+	FieldGroupIsPrimaryKey        string = "FieldGroupIsPrimaryKey"
+
+	// FieldGroupViewValuesInSeparateColumns For when you want to view the individual values in an array/slice of a field or non-nested group in separate columns in a flat/table.
+	//
+	// By default:
+	//	- Fields with multiple values will be joined as a string separated by a comma or FieldMultipleValuesJoinSymbol.
+	//  - Groups will appear as separate rows in a matrix.
 	FieldGroupViewValuesInSeparateColumns        string = "FieldGroupViewValuesInSeparateColumns"
 	FieldGroupViewMaxNoOfValuesInSeparateColumns string = "FieldGroupViewMaxNoOfValuesInSeparateColumns"
-	FieldGroupInputDisable                       string = "FieldGroupInputDisable"
-	FieldGroupDisablePropertiesEdit              string = "FieldGroupDisablePropertiesEdit"
-	FieldGroupViewDisable                        string = "FieldGroupViewDisable"
-	FieldGroupQueryConditionsEditDisable         string = "FieldGroupQueryConditionsEditDisable"
-	FieldGroupMaxEntries                         string = "FieldGroupMaxEntries"
-
-	FieldDataType                                string = "FieldDataType"
-	FieldUI                                      string = "FieldUi"
-	Field2dViewPosition                          string = "Field2dViewPosition"
-	FieldMultipleValuesJoinSymbol                string = "FieldMultipleValuesJoinSymbol"
-	FieldGroupTypeAny                            string = "FieldGroupTypeAny"
-	FieldCheckboxValueIfTrue                     string = "FieldCheckboxValueIfTrue"
-	FieldCheckboxValueIfFalse                    string = "FieldCheckboxValueIfFalse"
-	FieldCheckboxValuesUseInView                 string = "FieldCheckboxValuesUseInView"
-	FieldCheckboxValuesUseInStorage              string = "FieldCheckboxValuesUseInStorage"
 	FieldViewValuesInSeparateColumnsHeaderFormat string = "FieldViewValuesInSeparateColumnsHeaderFormat"
 	FieldViewValuesInSeparateColumnsHeaderIndex  string = "FieldViewValuesInSeparateColumnsHeaderIndex"
-	FieldInputPlaceholder                        string = "FieldInputPlaceholder"
-	FieldDatetimeFormat                          string = "FieldDatetimeFormat"
-	FieldSelectOptions                           string = "FieldSelectOptions"
-	FieldPlaceholder                             string = "FieldPlaceholder"
-	FieldDefaultValue                            string = "FieldDefaultValue"
+	FieldMultipleValuesJoinSymbol                string = "FieldMultipleValuesJoinSymbol"
+
+	FieldGroupInputDisable               string = "FieldGroupInputDisable"
+	FieldGroupDisablePropertiesEdit      string = "FieldGroupDisablePropertiesEdit"
+	FieldGroupViewDisable                string = "FieldGroupViewDisable"
+	FieldGroupQueryConditionsEditDisable string = "FieldGroupQueryConditionsEditDisable"
+	FieldGroupMaxEntries                 string = "FieldGroupMaxEntries"
+
+	FieldDataType string = "FieldDataType"
+	FieldUI       string = "FieldUi"
+
+	// FieldColumnPosition for setting a custom position for field/group when working with data in a flat2D
+	FieldColumnPosition      string = "FieldColumnPosition"
+	FieldGroupPositionBefore string = "FieldGroupPositionBefore"
+
+	FieldGroupTypeAny               string = "FieldGroupTypeAny"
+	FieldCheckboxValueIfTrue        string = "FieldCheckboxValueIfTrue"
+	FieldCheckboxValueIfFalse       string = "FieldCheckboxValueIfFalse"
+	FieldCheckboxValuesUseInView    string = "FieldCheckboxValuesUseInView"
+	FieldCheckboxValuesUseInStorage string = "FieldCheckboxValuesUseInStorage"
+	FieldInputPlaceholder           string = "FieldInputPlaceholder"
+	FieldDatetimeFormat             string = "FieldDatetimeFormat"
+	FieldSelectOptions              string = "FieldSelectOptions"
+	FieldPlaceholder                string = "FieldPlaceholder"
+	FieldDefaultValue               string = "FieldDefaultValue"
 
 	GroupViewTableIn2D             string = "GroupViewTableIn2D"
 	GroupQueryAddFullTextSearchBox string = "GroupQueryAddFullTextSearchBox"

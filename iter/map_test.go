@@ -1,6 +1,7 @@
 package iter
 
 import (
+	"fmt"
 	"reflect"
 	"strings"
 	"testing"
@@ -17,7 +18,7 @@ func TestIter_Map(t *testing.T) {
 
 		if reflect.DeepEqual(res, testData.Expected) != testData.ExpectedEqual {
 			t.Error(
-				"Test Title:", testData.TestTitle, "\n",
+				testData.TestTitle, "\n",
 				"expected DeepEqual result to be equal to ExpectedEqual",
 				"testData.ExpectedEqual=", testData.ExpectedEqual, "\n",
 				"testData.MetadataModel=", gojsoncore.JsonStringifyMust(testData.MetadataModel), "\n",
@@ -36,9 +37,10 @@ type mapData struct {
 }
 
 func mapDataTestData(yield func(data *mapData) bool) {
+	testCaseIndex := 1
 	if !yield(&mapData{
 		TestData: internal.TestData{
-			TestTitle: "Case 1: No Mapping (Keep everything)",
+			TestTitle: fmt.Sprintf("Test Case %d: No Mapping (Keep everything)", testCaseIndex),
 		},
 		MetadataModel: UserInformationMetadataModel(),
 		Callback:      func(fieldGroup gojsoncore.JsonObject) (any, bool) { return fieldGroup, false },
@@ -48,9 +50,10 @@ func mapDataTestData(yield func(data *mapData) bool) {
 		return
 	}
 
+	testCaseIndex++
 	if !yield(&mapData{
 		TestData: internal.TestData{
-			TestTitle: "Case 2: Append ' Found' to fields whose suffix is 'Name'",
+			TestTitle: fmt.Sprintf("Test Case %d: Append ' Found' to fields whose suffix is 'Name'", testCaseIndex),
 		},
 		MetadataModel: UserInformationMetadataModel(),
 		Callback: func(fieldGroup gojsoncore.JsonObject) (any, bool) {
@@ -117,9 +120,10 @@ func mapDataTestData(yield func(data *mapData) bool) {
 		return
 	}
 
+	testCaseIndex++
 	if !yield(&mapData{
 		TestData: internal.TestData{
-			TestTitle: "Case 3: Append ' Found' to fields with nested groups like 'Details'",
+			TestTitle: fmt.Sprintf("Test Case %d: Append ' Found' to fields with nested groups like 'Details'", testCaseIndex),
 		},
 		MetadataModel: UserInformationMetadataModel(),
 		Callback: func(fieldGroup gojsoncore.JsonObject) (any, bool) {

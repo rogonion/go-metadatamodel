@@ -3,7 +3,11 @@ Package core contains code shared amongst packages within the module go-metadata
 
 It contains type definitions, constants, as well as shared modules.
 
-# Module usage
+# Usage
+
+## FieldGroupPropertiesMatch
+
+Module can be used to define conditions for a set of properties in a field/group to skip/add when recursively going through a metadata model.
 
 ## JsonPathToValue
 

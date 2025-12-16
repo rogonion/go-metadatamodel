@@ -1,6 +1,7 @@
 package iter
 
 import (
+	"fmt"
 	"testing"
 
 	gojsoncore "github.com/rogonion/go-json/core"
@@ -17,7 +18,7 @@ func TestIter_ForEach(t *testing.T) {
 
 		if noOfIterations != testData.Expected {
 			t.Error(
-				"Test Title:", testData.TestTitle, "\n",
+				testData.TestTitle, "\n",
 				"expected noOfIterations to be equal to Expected",
 				"testData.Expected=", testData.Expected, "\n",
 				"noOfIterations=", noOfIterations,
@@ -34,9 +35,10 @@ type forEachData struct {
 }
 
 func forEachTestData(yield func(data *forEachData) bool) {
+	testCaseIndex := 1
 	if !yield(&forEachData{
 		TestData: internal.TestData{
-			TestTitle: "Case 1: Test Number of iterations from UserInformationMetadataModel",
+			TestTitle: fmt.Sprintf("Test Case %d: Test Number of iterations from UserInformationMetadataModel", testCaseIndex),
 		},
 		MetadataModel: UserInformationMetadataModel(),
 		Expected:      5,

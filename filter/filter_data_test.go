@@ -2,6 +2,7 @@ package filter
 
 import (
 	"errors"
+	"fmt"
 	"reflect"
 	"testing"
 
@@ -21,7 +22,7 @@ func TestFilter_FilterData(t *testing.T) {
 
 		if !reflect.DeepEqual(res, testData.FilterExcludeIndexes) {
 			t.Error(
-				"Test Title:", testData.TestTitle, "\n",
+				testData.TestTitle, "\n",
 				"expected res to be equal to testData.FilterExcludeIndexes\n",
 				"filterExcludeIndexes=", gojsoncore.JsonStringifyMust(testData.FilterExcludeIndexes), "\n",
 				"res=", gojsoncore.JsonStringifyMust(res),
@@ -32,8 +33,8 @@ func TestFilter_FilterData(t *testing.T) {
 			var filterError *core.Error
 			if errors.As(err, &filterError) {
 				t.Log(
+					testData.TestTitle, "\n",
 					"-----Error Details-----", "\n",
-					"Test Title:", testData.TestTitle, "\n",
 					filterError.String(), "\n",
 					"-----------------------",
 				)
@@ -73,11 +74,11 @@ func filterDataTestData(yield func(data *filterData) bool) {
 		},
 	})
 	metadataModel := testdata.ProductMetadataModel(nil)
-
+	testCaseIndex := 1
 	if !yield(
 		&filterData{
 			TestData: internal.TestData{
-				TestTitle: "Product Metadata Model",
+				TestTitle: fmt.Sprintf("Test Case %d: Product Metadata Model", testCaseIndex),
 			},
 			Object:        obj,
 			MetadataModel: metadataModel,
@@ -157,10 +158,11 @@ func filterDataTestData(yield func(data *filterData) bool) {
 	})
 	metadataModel = testdata.UserProfileMetadataModel(nil)
 
+	testCaseIndex++
 	if !yield(
 		&filterData{
 			TestData: internal.TestData{
-				TestTitle: "User Profile Metadata Model",
+				TestTitle: fmt.Sprintf("Test Case %d: User Profile Metadata Model", testCaseIndex),
 			},
 			Object:        obj,
 			MetadataModel: metadataModel,
@@ -197,10 +199,11 @@ func filterDataTestData(yield func(data *filterData) bool) {
 		return
 	}
 
+	testCaseIndex++
 	if !yield(
 		&filterData{
 			TestData: internal.TestData{
-				TestTitle: "User Profile Metadata Model with focus on Address of Profile at index 2",
+				TestTitle: fmt.Sprintf("Test Case %d: User Profile Metadata Model with focus on Address of Profile at index 2", testCaseIndex),
 			},
 			Object:        obj,
 			MetadataModel: metadataModel,

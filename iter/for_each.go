@@ -39,11 +39,9 @@ func ForEach(group any, callback ForeachCallback) {
 			return
 		}
 
-		if _, err := core.GetGroupFields(fgProperty); err == nil {
-			if _, err := core.GetGroupReadOrderOfFields(fgProperty); err == nil {
-				if !skipFieldGroupPropertyFields {
-					ForEach(fgProperty, callback)
-				}
+		if core.IsFieldAGroup(fgProperty) {
+			if !skipFieldGroupPropertyFields {
+				ForEach(fgProperty, callback)
 			}
 		}
 	}

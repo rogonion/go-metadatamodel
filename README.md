@@ -4,6 +4,7 @@
 
 - [Installation](#installation)
 - [Modules](#modules)
+    - [Field Columns](#field-columns)
     - [Filter](#filter)
     - [Database](#database)
     - [Iteration](#iteration)
@@ -15,6 +16,55 @@ go get github.com/rogonion/go-metadatamodel
 ```
 
 ## Modules
+
+### Field Columns
+
+This [module](fieldcolumns) can be used to extract fields from a metadata model into a structure that resembles columns in a table.
+
+It can:
+- Extract field properties into an ordered slice of fields, resembling columns in a table -> ColumnFields.
+- Set the new read order of column fields after repositioning -> ColumnFields.Reposition.
+- Set column fields to skip based on core.FieldGroupPropertiesMatch -> ColumnFields.Skip.
+
+Example usage:
+
+```go
+package main
+
+import (
+	gojsoncore "github.com/rogonion/go-json/core"
+	"github.com/rogonion/go-metadatamodel/core"
+	"github.com/rogonion/go-metadatamodel/fieldcolumns"
+)
+
+// Set metadata model
+var metadataModel gojsoncore.JsonObject
+
+// Module for extracting fields
+var fcExtraction *fieldcolumns.Extraction = fieldcolumns.NewColumnFieldsExtraction(metadataModel)
+
+var columnFields *fieldcolumns.ColumnFields
+var err error
+columnFields, err = fcExtraction.Extract()
+
+// Check err and that columnFields is not nil
+
+// Using ColumnFields.RepositionFieldColumns, reorder ColumnFields.CurrentIndexOfReadOrderOfColumnFields
+columnFields.Reposition()
+
+// update ColumnField.IndexInRepositionedColumnFields of each ColumnFields.Fields
+columnFields.UpdateIndexInRepositionedColumnFieldsInColumnField()
+
+// if field property does not match, skip it
+var add core.FieldGroupPropertiesMatch
+
+// if a field property matches, skip
+var skip core.FieldGroupPropertiesMatch
+
+// update ColumnField.Skip of each ColumnFields.Fields
+columnFields.Skip(skip, add)
+
+```
 
 ### Filter
 
@@ -133,7 +183,7 @@ var sourceData *object.Object
 var queryCondition gojsoncore.JsonObject
 
 // Set other properties using builder pattern 'With' or 'Set'. Refer to filter.FilterData structure.
-var filterData *filter.FilterData = filter.NewFilterData(sourceData, metadataModel)
+var filterData *filter.DataFilter = filter.NewFilterData(sourceData, metadataModel)
 
 var filterExcludeIndexes []int
 var err error
@@ -215,7 +265,7 @@ var product *Product = &Product{
 }
 
 // source data to manipulate
-var obj *object.Object = object.NewObject(product).WithSchema(sch)
+var obj *object.Object = object.NewObject().WithSourceInterface(product).WithSchema(sch)
 
 // Set product metadata model
 var productMetadataModel gojsoncore.JsonObject
@@ -316,6 +366,8 @@ package main
 
 import (
 	gojsoncore "github.com/rogonion/go-json/core"
+	"github.com/rogonion/go-metadatamodel/core"
+	"github.com/rogonion/go-metadatamodel/iter"
 	"github.com/rogonion/go-metadatamodel/testdata"
 )
 

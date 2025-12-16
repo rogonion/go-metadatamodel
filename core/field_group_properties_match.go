@@ -9,25 +9,9 @@ import (
 /*
 FieldGroupPropertiesMatch A set of gojsoncore.JsonObject properties where the key is the property and the value is the value to match.
 
-If map value is not of type FieldGroupPropertiesMatcher, reflect.DeepEqual will be used to check if property matches.
+If map value is not of type FieldGroupPropertiesFirstMatcher or FieldGroupPropertiesMatchingProps, reflect.DeepEqual will be used to check if property matches.
 */
 type FieldGroupPropertiesMatch map[string]any
-
-/*
-FieldGroupPropertiesMatcher for complex property matching logic.
-*/
-type FieldGroupPropertiesMatcher interface {
-	// Match
-	//
-	//Return `true` for property match.
-	Match(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) bool
-}
-
-type FuncFieldGroupPropertiesMatcher func(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) bool
-
-func (f FuncFieldGroupPropertiesMatcher) Match(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) bool {
-	return f(fieldGroupPropertyValue, fieldGroup)
-}
 
 /*
 IsValid check if FieldGroupPropertiesMatch is empty i.e., is map is not empty.
@@ -39,17 +23,35 @@ func (n FieldGroupPropertiesMatch) IsValid() bool {
 }
 
 /*
-Match returns true to indicate if property in fieldGroup matches entry in FieldGroupPropertiesMatch.
+FieldGroupPropertiesFirstMatcher for complex property matching logic.
+
+Use for simple first match.
+*/
+type FieldGroupPropertiesFirstMatcher interface {
+	// FirstMatch
+	//
+	// Return `true` for first property match.
+	FirstMatch(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) bool
+}
+
+type FuncFieldGroupPropertiesMatcherFirst func(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) bool
+
+func (f FuncFieldGroupPropertiesMatcherFirst) FirstMatch(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) bool {
+	return f(fieldGroupPropertyValue, fieldGroup)
+}
+
+/*
+FirstMatch returns true to indicate if property in fieldGroup matches entry in FieldGroupPropertiesMatch.
 
 Check if FieldGroupPropertiesMatch IsValid beforehand.
 */
-func (n FieldGroupPropertiesMatch) Match(fieldGroup gojsoncore.JsonObject) bool {
+func (n FieldGroupPropertiesMatch) FirstMatch(fieldGroup gojsoncore.JsonObject) bool {
 	for fieldGroupPropertyKey, valueToMatch := range n {
 		fieldGroupProp := fieldGroup[fieldGroupPropertyKey]
 
 		switch matcher := valueToMatch.(type) {
-		case FieldGroupPropertiesMatcher:
-			if matcher.Match(fieldGroupProp, fieldGroup) {
+		case FieldGroupPropertiesFirstMatcher:
+			if matcher.FirstMatch(fieldGroupProp, fieldGroup) {
 				return true
 			}
 		default:
@@ -60,4 +62,50 @@ func (n FieldGroupPropertiesMatch) Match(fieldGroup gojsoncore.JsonObject) bool 
 	}
 
 	return false
+}
+
+/*
+FieldGroupPropertiesMatchingProps for complex property matching logic.
+
+Use if you want to retrieve the set of props that satisfied the match.
+*/
+type FieldGroupPropertiesMatchingProps interface {
+	// MatchingProps
+	//
+	// Return set of properties that match.
+	MatchingProps(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) gojsoncore.JsonObject
+}
+
+type FuncFieldGroupPropertiesMatcherMatchingProps func(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) gojsoncore.JsonObject
+
+func (f FuncFieldGroupPropertiesMatcherMatchingProps) MatchingProps(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) gojsoncore.JsonObject {
+	return f(fieldGroupPropertyValue, fieldGroup)
+}
+
+/*
+MatchingProps returns the set of properties in fieldGroup that satisfied the match.
+
+Check if FieldGroupPropertiesMatch IsValid beforehand.
+*/
+func (n FieldGroupPropertiesMatch) MatchingProps(fieldGroup gojsoncore.JsonObject) gojsoncore.JsonObject {
+	matchingProps := make(gojsoncore.JsonObject)
+
+	for fieldGroupPropertyKey, valueToMatch := range n {
+		fieldGroupProp := fieldGroup[fieldGroupPropertyKey]
+
+		switch matcher := valueToMatch.(type) {
+		case FieldGroupPropertiesMatchingProps:
+			if res := matcher.MatchingProps(fieldGroupProp, fieldGroup); len(res) > 0 {
+				for k, v := range res {
+					matchingProps[k] = v
+				}
+			}
+		default:
+			if reflect.DeepEqual(fieldGroupProp, valueToMatch) {
+				matchingProps[fieldGroupPropertyKey] = fieldGroupProp
+			}
+		}
+	}
+
+	return matchingProps
 }

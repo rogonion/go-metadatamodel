@@ -1,6 +1,7 @@
 package iter
 
 import (
+	"fmt"
 	"reflect"
 	"strings"
 	"testing"
@@ -17,7 +18,7 @@ func TestIter_Filter(t *testing.T) {
 
 		if reflect.DeepEqual(res, testData.Expected) != testData.ExpectedEqual {
 			t.Error(
-				"Test Title:", testData.TestTitle, "\n",
+				testData.TestTitle, "\n",
 				"expected DeepEqual result to be equal to ExpectedEqual",
 				"testData.ExpectedEqual=", testData.ExpectedEqual, "\n",
 				"testData.MetadataModel=", gojsoncore.JsonStringifyMust(testData.MetadataModel), "\n",
@@ -36,9 +37,10 @@ type filterData struct {
 }
 
 func filterDataTestData(yield func(data *filterData) bool) {
+	testCaseIndex := 1
 	if !yield(&filterData{
 		TestData: internal.TestData{
-			TestTitle: "Case 1: No filter (Keep everything)",
+			TestTitle: fmt.Sprintf("Test Case %d: No filter (Keep everything)", testCaseIndex),
 		},
 		MetadataModel: UserInformationMetadataModel(),
 		Callback:      func(fieldGroup gojsoncore.JsonObject) (bool, bool) { return true, false },
@@ -48,9 +50,10 @@ func filterDataTestData(yield func(data *filterData) bool) {
 		return
 	}
 
+	testCaseIndex++
 	if !yield(&filterData{
 		TestData: internal.TestData{
-			TestTitle: "Case 2: Remove fields whose suffix is 'Name'",
+			TestTitle: fmt.Sprintf("Test Case %d: Remove fields whose suffix is 'Name'", testCaseIndex),
 		},
 		MetadataModel: UserInformationMetadataModel(),
 		Callback: func(fieldGroup gojsoncore.JsonObject) (bool, bool) {
@@ -104,9 +107,10 @@ func filterDataTestData(yield func(data *filterData) bool) {
 		return
 	}
 
+	testCaseIndex++
 	if !yield(&filterData{
 		TestData: internal.TestData{
-			TestTitle: "Case 3: Remove an fields with nested groups like (\"Details\")",
+			TestTitle: fmt.Sprintf("Test Case %d: Remove an fields with nested groups like (\"Details\")", testCaseIndex),
 		},
 		MetadataModel: UserInformationMetadataModel(),
 		Callback: func(fieldGroup gojsoncore.JsonObject) (bool, bool) {

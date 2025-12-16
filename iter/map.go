@@ -36,11 +36,9 @@ func Map(metadataModelGroup any, callback MapCallback) any {
 
 		skipFieldGroupPropertyFields := false
 		fieldGroupProp[core.GroupFields].(gojsoncore.JsonArray)[0].(gojsoncore.JsonObject)[fgKeySuffix], skipFieldGroupPropertyFields = callback(fgProperty)
-		if _, err := core.GetGroupFields(fieldGroupProp[core.GroupFields].(gojsoncore.JsonArray)[0].(gojsoncore.JsonObject)[fgKeySuffix]); err == nil {
-			if _, err := core.GetGroupReadOrderOfFields(fieldGroupProp[core.GroupFields].(gojsoncore.JsonArray)[0].(gojsoncore.JsonObject)[fgKeySuffix]); err == nil {
-				if !skipFieldGroupPropertyFields {
-					fieldGroupProp[core.GroupFields].(gojsoncore.JsonArray)[0].(gojsoncore.JsonObject)[fgKeySuffix] = Map(fieldGroupProp[core.GroupFields].(gojsoncore.JsonArray)[0].(gojsoncore.JsonObject)[fgKeySuffix], callback)
-				}
+		if core.IsFieldAGroup(fgProperty) {
+			if !skipFieldGroupPropertyFields {
+				fieldGroupProp[core.GroupFields].(gojsoncore.JsonArray)[0].(gojsoncore.JsonObject)[fgKeySuffix] = Map(fgProperty, callback)
 			}
 		}
 	}
@@ -58,6 +56,6 @@ Parameters:
 
 Return:
  1. fieldGroup whether modified or not.
- 2. `true` to skip processing fieldGroup fields if it contains them.\
+ 2. `true` to skip processing fieldGroup fields if it contains them.
 */
 type MapCallback func(fieldGroup gojsoncore.JsonObject) (any, bool)
