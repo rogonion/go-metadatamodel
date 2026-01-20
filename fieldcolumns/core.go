@@ -12,9 +12,11 @@ type FieldColumnPosition struct {
 	SourceIndex           int
 	FieldGroupJsonPathKey path.JSONPath
 
+	// For individual entries in a single field.
 	FieldViewInSeparateColumns                  bool
 	FieldViewValuesInSeparateColumnsHeaderIndex int
 
+	// For fields in 1D groups that should be viewed in separate columns.
 	GroupViewInSeparateColumns                  bool
 	GroupViewValuesInSeparateColumnsHeaderIndex int
 	GroupViewParentJsonPathKey                  path.JSONPath

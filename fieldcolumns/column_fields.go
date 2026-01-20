@@ -65,11 +65,11 @@ func (n *ColumnFields) Skip(skip core.FieldGroupPropertiesMatch, add core.FieldG
 }
 
 /*
-Reposition reorganizes Extraction.CurrentIndexOfReadOrderOfColumnFields based on Extraction.RepositionFieldColumns information.
+Reposition reorganizes ColumnFields.CurrentIndexOfReadOrderOfColumnFields based on Extraction.RepositionFieldColumns information.
 
-Only call this method after FieldColumns.Extract has been run successfully.
+Only call this method after Extraction.Extract has been run successfully.
 
-To retrieve index of fields in read order, call Extraction.GetReadOrderOfColumnFields.
+To retrieve index of fields in read order, call ColumnFields.GetCurrentIndexOfReadOrderOfFields.
 */
 func (n *ColumnFields) Reposition() {
 	totalNoOfFields := len(n.CurrentIndexOfReadOrderOfColumnFields)
@@ -103,7 +103,7 @@ func (n *ColumnFields) Reposition() {
 }
 
 /*
-UpdateIndexInRepositionedColumnFieldsInColumnField after Extraction.Reposition, update ColumnField.IndexInRepositionedColumnFields.
+UpdateIndexInRepositionedColumnFieldsInColumnField after ColumnFields.Reposition, update ColumnField.IndexInRepositionedColumnFields.
 */
 func (n *ColumnFields) UpdateIndexInRepositionedColumnFieldsInColumnField() {
 	for indexOfField, jsonPathKey := range n.ReadOrderOfColumnFields {
@@ -162,7 +162,7 @@ type ColumnField struct {
 	Schema schema.Schema
 	// IndexInReadOrderOfColumnFields original index of field as it was being Extraction.Extract.
 	IndexInReadOrderOfColumnFields int
-	// IndexInRepositionedColumnFields new index of field after Extraction.Reposition.
+	// IndexInRepositionedColumnFields new index of field after ColumnFields.Reposition.
 	IndexInRepositionedColumnFields int
 	// Skip field. Set using ColumnFields.Skip.
 	Skip bool
