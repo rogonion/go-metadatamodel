@@ -30,12 +30,12 @@ func TestFieldColumns_Skip(t *testing.T) {
 		}
 
 		columnFields.Skip(testData.Skip, testData.Add)
-		if !reflect.DeepEqual(columnFields.CurrentFieldsToSkip, testData.ExpectedFieldsToSkip) {
+		if !reflect.DeepEqual(columnFields.FieldsToSkip, testData.ExpectedFieldsToSkip) {
 			t.Error(
 				testData.TestTitle, "\n",
 				"result skip ColumnFields not equal to testData.ExpectedFieldsToSkip\n",
 				"ExpectedColumnFields=", gojsoncore.JsonStringifyMust(testData.ExpectedFieldsToSkip), "\n",
-				"result=", gojsoncore.JsonStringifyMust(columnFields.CurrentFieldsToSkip),
+				"result=", gojsoncore.JsonStringifyMust(columnFields.FieldsToSkip),
 			)
 		}
 	}
@@ -82,7 +82,7 @@ func skipTestData(yield func(data *skipData) bool) {
 
 	expectedFieldsToSkip = make(FieldsToSkip)
 	metadataModel = iter.Map(testdata.UserProfileMetadataModel(nil), func(fieldGroup gojsoncore.JsonObject) (any, bool) {
-		if _, err := core.AsJSONPath(fieldGroup[core.FieldGroupJsonPathKey]); err == nil {
+		if fieldGroupJsonPathKey, err := core.AsJSONPath(fieldGroup[core.FieldGroupJsonPathKey]); err == nil {
 			if name, ok := fieldGroup[core.FieldGroupName].(string); ok && name == "Address" {
 				fieldGroup[core.FieldGroupViewValuesInSeparateColumns] = true
 				fieldGroup[core.FieldGroupViewMaxNoOfValuesInSeparateColumns] = 3
@@ -92,8 +92,8 @@ func skipTestData(yield func(data *skipData) bool) {
 						for currentIndex := range 3 {
 							for _, fgKeySuffix := range fgReadOrder {
 								if field, err := core.AsJsonObject(fgFields[fgKeySuffix]); err == nil {
-									if fieldJsonpathKey, err := core.AsJSONPath(field[core.FieldGroupJsonPathKey]); err == nil {
-										expectedFieldsToSkip[path.JSONPath(string(fieldJsonpathKey)+path.JsonpathLeftBracket+fmt.Sprintf("%d", currentIndex)+path.JsonpathRightBracket)] = FieldToSkip()
+									if _, err := core.AsJSONPath(field[core.FieldGroupJsonPathKey]); err == nil {
+										expectedFieldsToSkip[path.JSONPath(string(fieldGroupJsonPathKey)+path.JsonpathDotNotation+core.GroupFields+path.JsonpathLeftBracket+fmt.Sprintf("%d", currentIndex)+path.JsonpathRightBracket+path.JsonpathDotNotation+fgKeySuffix)] = FieldToSkip()
 									}
 								}
 
@@ -195,12 +195,12 @@ func TestFieldColumns_Reposition(t *testing.T) {
 		}
 
 		columnFields.Reposition()
-		if !reflect.DeepEqual(columnFields.CurrentIndexOfReadOrderOfColumnFields, testData.ExpectedIndexOfReadOrderOfColumnFields) {
+		if !reflect.DeepEqual(columnFields.RepositionedReadOrderOfColumnFields, testData.ExpectedIndexOfReadOrderOfColumnFields) {
 			t.Error(
 				testData.TestTitle, "\n",
 				"result repositioned ColumnFields not equal to testData.ExpectedIndexOfReadOrderOfColumnFields\n",
 				"ExpectedColumnFields=", gojsoncore.JsonStringifyMust(testData.ExpectedIndexOfReadOrderOfColumnFields), "\n",
-				"result=", gojsoncore.JsonStringifyMust(columnFields.CurrentIndexOfReadOrderOfColumnFields),
+				"result=", gojsoncore.JsonStringifyMust(columnFields.RepositionedReadOrderOfColumnFields),
 			)
 		}
 	}

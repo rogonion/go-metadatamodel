@@ -27,7 +27,7 @@ func (n *Flattener) WriteToDestination(destination *object.Object) error {
 	// If columnFields exists, we get the calculated read order (Repositioned & Skipped).
 	var readOrder []int
 	if n.columnFields != nil {
-		readOrder = n.columnFields.GetCurrentIndexOfReadOrderOfFields()
+		readOrder = n.columnFields.UnskippedReadOrderOfColumnFields
 	} else {
 		// Fallback: Create a sequential list [0, 1, 2, ... N]
 		// This ensures raw dumps work even without metadata manipulation.
@@ -70,7 +70,7 @@ func (n *Flattener) WriteToDestination(destination *object.Object) error {
 /*
 recursiveConvert now takes the current table state and returns the mutated table.
 */
-func (n *Flattener) recursiveConvert(groupConversion *FieldGroupConversion, linearCollectionIndexes []int, incomingRows FlattenedTable) (FlattenedTable, error) {
+func (n *Flattener) recursiveConvert(groupConversion *RecursiveIndexTree, linearCollectionIndexes []int, incomingRows FlattenedTable) (FlattenedTable, error) {
 	const FunctionName = "recursiveConvert"
 
 	// Working set starts as a copy of incoming rows
@@ -196,7 +196,9 @@ func (n *Flattener) mergeCellValueIntoRows(rows FlattenedTable, cellValue reflec
 /*
 Flatten processes the sourceObject and populates the internal Flattener.currentSourceObjectResult.
 
-Once the process is successful, you can call Flattener.GetResult to retrieve the FlattenedTable.
+Once the process is successful, you can call Flattener.GetResult to retrieve the FlattenedTable or Flattener.WriteToDestination.
+
+For preset Flattener.columnFields, ensure fieldcolumns.ColumnFields.UnskippedReadOrderOfColumnFields is set.
 */
 func (n *Flattener) Flatten(sourceObject *object.Object) error {
 	const FunctionName = "Flatten"
@@ -208,12 +210,13 @@ func (n *Flattener) Flatten(sourceObject *object.Object) error {
 			return NewError().WithFunctionName(FunctionName).WithMessage("extract default columnFields failed").WithNestedError(err)
 		} else {
 			columnFields.Reposition()
+			columnFields.Skip(nil, nil)
 			n.columnFields = columnFields
 		}
 	}
 
 	if n.fieldGroupConversion == nil {
-		if value, err := n.recursiveInitFieldGroupConversion(n.metadataModel, path.JSONPath(path.JsonpathKeyRoot)); err != nil {
+		if value, err := n.recursiveInitRecursiveIndexTree(n.metadataModel, path.JSONPath(path.JsonpathKeyRoot)); err != nil {
 			return err
 		} else {
 			n.fieldGroupConversion = value
@@ -269,8 +272,8 @@ Generates a tree of the source object with the necessary data required to perfor
 
 Ignores if a field needs to be skipped or reordered to ensure proper merging of FlattenedTable generated at each recursive step.
 */
-func (n *Flattener) recursiveInitFieldGroupConversion(group any, groupJsonPathKey path.JSONPath) (*FieldGroupConversion, error) {
-	const FunctionName = "recursiveInitFieldGroupConversion"
+func (n *Flattener) recursiveInitRecursiveIndexTree(group any, groupJsonPathKey path.JSONPath) (*RecursiveIndexTree, error) {
+	const FunctionName = "recursiveInitRecursiveIndexTree"
 
 	fieldGroupProp, err := core.AsJsonObject(group)
 	if err != nil {
@@ -287,11 +290,11 @@ func (n *Flattener) recursiveInitFieldGroupConversion(group any, groupJsonPathKe
 		return nil, NewError().WithFunctionName(FunctionName).WithMessage("get group read order of fields failed").WithNestedError(err).WithData(gojsoncore.JsonObject{"Group": group})
 	}
 
-	groupConversion := &FieldGroupConversion{
+	groupIndexTree := &RecursiveIndexTree{
 		FieldColumnPosition: &fieldcolumns.FieldColumnPosition{
 			FieldGroupJsonPathKey: groupJsonPathKey,
 		},
-		GroupFields: make([]*FieldGroupConversion, 0),
+		GroupFields: make([]*RecursiveIndexTree, 0),
 	}
 
 	for _, fgKeySuffix := range groupReadOrderOfFields {
@@ -331,11 +334,11 @@ func (n *Flattener) recursiveInitFieldGroupConversion(group any, groupJsonPathKe
 											}
 											if field, ok := n.columnFields.Fields[fieldColumnPosition.JSONPath()]; ok {
 												if !field.Skip {
-													newFieldConversion := &FieldGroupConversion{
+													newFieldConversion := &RecursiveIndexTree{
 														FieldColumnPosition: fieldColumnPosition,
 													}
 
-													groupConversion.GroupFields = append(groupConversion.GroupFields, newFieldConversion)
+													groupIndexTree.GroupFields = append(groupIndexTree.GroupFields, newFieldConversion)
 												}
 											}
 										}
@@ -348,12 +351,12 @@ func (n *Flattener) recursiveInitFieldGroupConversion(group any, groupJsonPathKe
 				}
 			}
 
-			if fgGroupConversion, err := n.recursiveInitFieldGroupConversion(fgProperty, fgJsonPathKey); err != nil {
+			if fgGroupConversion, err := n.recursiveInitRecursiveIndexTree(fgProperty, fgJsonPathKey); err != nil {
 				if !errors.Is(err, ErrNoGroupFields) {
 					return nil, err
 				}
 			} else {
-				groupConversion.GroupFields = append(groupConversion.GroupFields, fgGroupConversion)
+				groupIndexTree.GroupFields = append(groupIndexTree.GroupFields, fgGroupConversion)
 			}
 
 			continue
@@ -366,7 +369,7 @@ func (n *Flattener) recursiveInitFieldGroupConversion(group any, groupJsonPathKe
 			for columnIndex := range fgViewMaxNoOfValuesInSeparateColumns {
 				if field, ok := n.columnFields.Fields[gojsoncore.Ptr(fieldcolumns.FieldColumnPosition{FieldGroupJsonPathKey: fgJsonPathKey, FieldViewInSeparateColumns: true, FieldViewValuesInSeparateColumnsHeaderIndex: columnIndex}).JSONPath()]; ok {
 					if !field.Skip {
-						newFieldConversion := &FieldGroupConversion{
+						newFieldConversion := &RecursiveIndexTree{
 							FieldColumnPosition: &fieldcolumns.FieldColumnPosition{
 								FieldGroupJsonPathKey:                       fgJsonPathKey,
 								FieldViewInSeparateColumns:                  true,
@@ -374,7 +377,7 @@ func (n *Flattener) recursiveInitFieldGroupConversion(group any, groupJsonPathKe
 							},
 						}
 
-						groupConversion.GroupFields = append(groupConversion.GroupFields, newFieldConversion)
+						groupIndexTree.GroupFields = append(groupIndexTree.GroupFields, newFieldConversion)
 					}
 				}
 			}
@@ -384,22 +387,22 @@ func (n *Flattener) recursiveInitFieldGroupConversion(group any, groupJsonPathKe
 		// Field WITHOUT view in separate columns
 		if field, ok := n.columnFields.Fields[fgJsonPathKey]; ok {
 			if !field.Skip {
-				newFieldConversion := &FieldGroupConversion{
+				newFieldConversion := &RecursiveIndexTree{
 					FieldColumnPosition: &fieldcolumns.FieldColumnPosition{
 						FieldGroupJsonPathKey: fgJsonPathKey,
 					},
 				}
 
-				groupConversion.GroupFields = append(groupConversion.GroupFields, newFieldConversion)
+				groupIndexTree.GroupFields = append(groupIndexTree.GroupFields, newFieldConversion)
 			}
 		}
 	}
 
-	if len(groupConversion.GroupFields) == 0 {
+	if len(groupIndexTree.GroupFields) == 0 {
 		return nil, NewError().WithFunctionName(FunctionName).WithMessage("no group fields to extract found").WithData(gojsoncore.JsonObject{"Group": group}).WithNestedError(ErrNoGroupFields)
 	}
 
-	return groupConversion, nil
+	return groupIndexTree, nil
 }
 
 func (n *Flattener) WithColumnFields(value *fieldcolumns.ColumnFields) *Flattener {
@@ -457,16 +460,16 @@ type Flattener struct {
 	currentSourceObjectResult FlattenedTable
 
 	// fieldGroupConversion data (tree of fields/groups) to use when converting the currentSourceObject.
-	fieldGroupConversion *FieldGroupConversion
+	fieldGroupConversion *RecursiveIndexTree
 }
 
 /*
-FieldGroupConversion represents tree of field/groups to read for Flattener.
+RecursiveIndexTree represents tree of field/groups to read for Flattener.
 */
-type FieldGroupConversion struct {
+type RecursiveIndexTree struct {
 	FieldColumnPosition *fieldcolumns.FieldColumnPosition
 
-	GroupFields []*FieldGroupConversion
+	GroupFields []*RecursiveIndexTree
 }
 
 func DefaultEmptyColumn() reflect.Value {

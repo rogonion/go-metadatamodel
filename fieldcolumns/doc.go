@@ -37,7 +37,7 @@ Example:
 
 After extracting metadata model fields into ColumnFields, you can reposition them based on the ColumnFields.RepositionFieldColumns information set during Extraction.Extract.
 
-1. Call ColumnFields.Reposition to update the ColumnFields.CurrentIndexOfReadOrderOfColumnFields.
+1. Call ColumnFields.Reposition to update the ColumnFields.RepositionedReadOrderOfColumnFields.
 
 	var columnFields *ColumnFields
 	columnFields.Reposition()

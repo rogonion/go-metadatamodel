@@ -27,7 +27,7 @@ type FieldColumnPosition struct {
 
 func (n *FieldColumnPosition) String() string {
 	if n.GroupViewInSeparateColumns {
-		return string(n.GroupViewParentJsonPathKey) + path.JsonpathLeftBracket + fmt.Sprintf("%d", n.GroupViewValuesInSeparateColumnsHeaderIndex) + path.JsonpathRightBracket + path.JsonpathDotNotation + n.FieldJsonPathKeySuffix
+		return string(n.GroupViewParentJsonPathKey) + path.JsonpathDotNotation + core.GroupFields + path.JsonpathLeftBracket + fmt.Sprintf("%d", n.GroupViewValuesInSeparateColumnsHeaderIndex) + path.JsonpathRightBracket + path.JsonpathDotNotation + n.FieldJsonPathKeySuffix
 	}
 
 	if n.FieldViewInSeparateColumns {
@@ -41,6 +41,7 @@ func (n *FieldColumnPosition) JSONPath() path.JSONPath {
 	return path.JSONPath(n.String())
 }
 
+type FieldsColumnsPositions []*FieldColumnPosition
 type RepositionFieldColumns []FieldColumnPosition
 
 var (

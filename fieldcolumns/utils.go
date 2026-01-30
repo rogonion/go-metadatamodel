@@ -55,10 +55,10 @@ func getFieldColumnsFromMetadataModel(metadataModel gojsoncore.JsonObject, sch s
 														FieldJsonPathKeySuffix:                      nFgKeySuffix,
 													}
 													columnFields.Fields[fieldColumnPosition.JSONPath()] = &ColumnField{
-														Property:                       newField,
-														IndexInReadOrderOfColumnFields: len(columnFields.ReadOrderOfColumnFields),
+														Property:                               newField,
+														IndexInOriginalReadOrderOfColumnFields: len(columnFields.OriginalReadOrderOfColumnFields),
 													}
-													columnFields.ReadOrderOfColumnFields = append(columnFields.ReadOrderOfColumnFields, fieldColumnPosition)
+													columnFields.OriginalReadOrderOfColumnFields = append(columnFields.OriginalReadOrderOfColumnFields, fieldColumnPosition)
 
 													if pathToSchema, err := core.NewJsonPathToValue().Get(nJsonPathKey, nil); err == nil {
 														if fieldGroupSchema, err := schema.GetSchemaAtPath(pathToSchema, sch); err == nil {
@@ -66,7 +66,7 @@ func getFieldColumnsFromMetadataModel(metadataModel gojsoncore.JsonObject, sch s
 														}
 													}
 
-													columnFields.CurrentIndexOfReadOrderOfColumnFields = append(columnFields.CurrentIndexOfReadOrderOfColumnFields, currentFieldIndex)
+													columnFields.RepositionedReadOrderOfColumnFields = append(columnFields.RepositionedReadOrderOfColumnFields, currentFieldIndex)
 													currentFieldIndex++
 												}
 											}
@@ -99,10 +99,10 @@ func getFieldColumnsFromMetadataModel(metadataModel gojsoncore.JsonObject, sch s
 							FieldViewValuesInSeparateColumnsHeaderIndex: columnIndex,
 						}
 						columnFields.Fields[fieldColumnPosition.JSONPath()] = &ColumnField{
-							Property:                       newField,
-							IndexInReadOrderOfColumnFields: len(columnFields.ReadOrderOfColumnFields),
+							Property:                               newField,
+							IndexInOriginalReadOrderOfColumnFields: len(columnFields.OriginalReadOrderOfColumnFields),
 						}
-						columnFields.ReadOrderOfColumnFields = append(columnFields.ReadOrderOfColumnFields, fieldColumnPosition)
+						columnFields.OriginalReadOrderOfColumnFields = append(columnFields.OriginalReadOrderOfColumnFields, fieldColumnPosition)
 
 						if pathToSchema, err := core.NewJsonPathToValue().Get(jsonPathKey, nil); err == nil {
 							if fieldGroupSchema, err := schema.GetSchemaAtPath(pathToSchema, sch); err == nil {
@@ -110,7 +110,7 @@ func getFieldColumnsFromMetadataModel(metadataModel gojsoncore.JsonObject, sch s
 							}
 						}
 
-						columnFields.CurrentIndexOfReadOrderOfColumnFields = append(columnFields.CurrentIndexOfReadOrderOfColumnFields, currentFieldIndex)
+						columnFields.RepositionedReadOrderOfColumnFields = append(columnFields.RepositionedReadOrderOfColumnFields, currentFieldIndex)
 						currentFieldIndex++
 					}
 				}
@@ -120,10 +120,10 @@ func getFieldColumnsFromMetadataModel(metadataModel gojsoncore.JsonObject, sch s
 				}
 				if newField, err := deep.Copy(fieldGroup); err == nil {
 					columnFields.Fields[fieldColumnPosition.JSONPath()] = &ColumnField{
-						Property:                       newField,
-						IndexInReadOrderOfColumnFields: len(columnFields.ReadOrderOfColumnFields),
+						Property:                               newField,
+						IndexInOriginalReadOrderOfColumnFields: len(columnFields.OriginalReadOrderOfColumnFields),
 					}
-					columnFields.ReadOrderOfColumnFields = append(columnFields.ReadOrderOfColumnFields, fieldColumnPosition)
+					columnFields.OriginalReadOrderOfColumnFields = append(columnFields.OriginalReadOrderOfColumnFields, fieldColumnPosition)
 
 					if pathToSchema, err := core.NewJsonPathToValue().Get(jsonPathKey, nil); err == nil {
 						if fieldGroupSchema, err := schema.GetSchemaAtPath(pathToSchema, sch); err == nil {
@@ -131,7 +131,7 @@ func getFieldColumnsFromMetadataModel(metadataModel gojsoncore.JsonObject, sch s
 						}
 					}
 
-					columnFields.CurrentIndexOfReadOrderOfColumnFields = append(columnFields.CurrentIndexOfReadOrderOfColumnFields, currentFieldIndex)
+					columnFields.RepositionedReadOrderOfColumnFields = append(columnFields.RepositionedReadOrderOfColumnFields, currentFieldIndex)
 					currentFieldIndex++
 				}
 			}

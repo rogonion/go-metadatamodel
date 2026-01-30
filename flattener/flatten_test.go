@@ -172,13 +172,13 @@ func flattenerTestData(yield func(data *flattenTestData) bool) {
 	// Original Order: ID (0), Name (1), Price (2)
 	// Desired Order: Price (2), Name (1)
 	reorderedCols := fieldcolumns.NewColumnFields()
-	reorderedCols.CurrentIndexOfReadOrderOfColumnFields = []int{2, 1} // Index in Original Read Order
+	reorderedCols.RepositionedReadOrderOfColumnFields = []int{2, 1} // Index in Original Read Order
 
 	// We must populate Fields map so WriteTo can validate
 	// (In a real scenario, Extraction fills this, here we mock what WriteTo needs)
-	// Actually, WriteTo relies on GetCurrentIndexOfReadOrderOfFields which uses Fields to check skips.
+	// Actually, WriteTo relies on GetSkippedReadOrderOfFieldsFromRepositioned which uses Fields to check skips.
 	// Let's rely on the fact that WriteTo uses n.currentReadOrderOfColumnFields directly if set
-	// via columnFields.GetCurrentIndexOfReadOrderOfFields().
+	// via columnFields.GetSkippedReadOrderOfFieldsFromRepositioned().
 
 	// Since we can't easily mock the full internal structure of ColumnFields without Extraction,
 	// we will perform a real extraction first using the user's library logic, then reposition.
@@ -190,7 +190,8 @@ func flattenerTestData(yield func(data *flattenTestData) bool) {
 	// Reposition: Swap ID(0) and Price(2), essentially.
 	// Let's just manually override the Index Slice for simplicity in this test
 	// We want Price (index 2 in original) then Name (index 1 in original). ID (0) is omitted.
-	extractedCols.CurrentIndexOfReadOrderOfColumnFields = []int{2, 1}
+	extractedCols.RepositionedReadOrderOfColumnFields = []int{2, 1}
+	extractedCols.Skip(nil, nil)
 
 	expectedReordered := [][]any{
 		{[]float64{999.99}, []string{"Laptop"}},

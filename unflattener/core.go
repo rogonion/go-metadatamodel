@@ -1,4 +1,4 @@
-package flattener
+package unflattener
 
 import (
 	"errors"
@@ -8,9 +8,9 @@ import (
 
 var (
 	// ErrFlattenError default error for field columns module.
-	ErrFlattenError = errors.New("flattening encountered an error")
+	ErrFlattenError = errors.New("unflattening encountered an error")
 
-	// ErrNoGroupFields for when RecursiveIndexTree.GroupFields is empty if field is a group.
+	// ErrNoGroupFields for when RecursiveGroupIndexTree.MmPropGroupFields is empty if field is a group.
 	ErrNoGroupFields = errors.New("no group fields to extract found")
 )
 

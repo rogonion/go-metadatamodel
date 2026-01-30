@@ -191,7 +191,7 @@ setRepositionForFieldColumn
 Set after call to Extraction.appendField for the same field.
 */
 func (n *Extraction) setRepositionForFieldColumn(value *FieldColumnPosition) {
-	value.SourceIndex = len(n.columnFields.ReadOrderOfColumnFields) - 1
+	value.SourceIndex = len(n.columnFields.OriginalReadOrderOfColumnFields) - 1
 	n.columnFields.RepositionFieldColumns = append(n.columnFields.RepositionFieldColumns, *value)
 }
 
@@ -204,8 +204,11 @@ func (n *Extraction) appendField(field gojsoncore.JsonObject, fieldColumnPositio
 	const FunctionName = "appendField"
 
 	newFieldColumn := &ColumnField{
-		Property:                       field,
-		IndexInReadOrderOfColumnFields: len(n.columnFields.ReadOrderOfColumnFields),
+		FieldColumnPosition:                    *fieldColumnPosition,
+		Property:                               field,
+		IndexInOriginalReadOrderOfColumnFields: len(n.columnFields.OriginalReadOrderOfColumnFields),
+		IndexInRepositionedColumnFields:        -1,
+		IndexInUnskippedColumnFields:           -1,
 	}
 	if n.schema != nil {
 		if jsonPathToValue, err := core.NewJsonPathToValue().Get(fieldColumnPosition.FieldGroupJsonPathKey, nil); err == nil {
@@ -216,8 +219,8 @@ func (n *Extraction) appendField(field gojsoncore.JsonObject, fieldColumnPositio
 	}
 
 	n.columnFields.Fields[fieldColumnPosition.JSONPath()] = newFieldColumn
-	n.columnFields.ReadOrderOfColumnFields = append(n.columnFields.ReadOrderOfColumnFields, fieldColumnPosition)
-	n.columnFields.CurrentIndexOfReadOrderOfColumnFields = append(n.columnFields.CurrentIndexOfReadOrderOfColumnFields, newFieldColumn.IndexInReadOrderOfColumnFields)
+	n.columnFields.OriginalReadOrderOfColumnFields = append(n.columnFields.OriginalReadOrderOfColumnFields, fieldColumnPosition)
+	n.columnFields.RepositionedReadOrderOfColumnFields = append(n.columnFields.RepositionedReadOrderOfColumnFields, newFieldColumn.IndexInOriginalReadOrderOfColumnFields)
 	return nil
 }
 
