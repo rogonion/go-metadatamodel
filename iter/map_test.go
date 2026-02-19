@@ -1,7 +1,6 @@
 package iter
 
 import (
-	"fmt"
 	"reflect"
 	"strings"
 	"testing"
@@ -37,10 +36,9 @@ type mapData struct {
 }
 
 func mapDataTestData(yield func(data *mapData) bool) {
-	testCaseIndex := 1
 	if !yield(&mapData{
 		TestData: internal.TestData{
-			TestTitle: fmt.Sprintf("Test Case %d: No Mapping (Keep everything)", testCaseIndex),
+			TestTitle: "No Mapping (Keep everything)",
 		},
 		MetadataModel: UserInformationMetadataModel(),
 		Callback:      func(fieldGroup gojsoncore.JsonObject) (any, bool) { return fieldGroup, false },
@@ -50,10 +48,9 @@ func mapDataTestData(yield func(data *mapData) bool) {
 		return
 	}
 
-	testCaseIndex++
 	if !yield(&mapData{
 		TestData: internal.TestData{
-			TestTitle: fmt.Sprintf("Test Case %d: Append ' Found' to fields whose suffix is 'Name'", testCaseIndex),
+			TestTitle: "Append ' Found' to fields whose suffix is 'Name'",
 		},
 		MetadataModel: UserInformationMetadataModel(),
 		Callback: func(fieldGroup gojsoncore.JsonObject) (any, bool) {
@@ -120,10 +117,9 @@ func mapDataTestData(yield func(data *mapData) bool) {
 		return
 	}
 
-	testCaseIndex++
 	if !yield(&mapData{
 		TestData: internal.TestData{
-			TestTitle: fmt.Sprintf("Test Case %d: Append ' Found' to fields with nested groups like 'Details'", testCaseIndex),
+			TestTitle: "Append ' Found' to fields with nested groups like 'Details'",
 		},
 		MetadataModel: UserInformationMetadataModel(),
 		Callback: func(fieldGroup gojsoncore.JsonObject) (any, bool) {

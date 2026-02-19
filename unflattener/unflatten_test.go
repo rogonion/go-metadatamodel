@@ -16,42 +16,42 @@ import (
 
 func TestUnflattener_Unflatten(t *testing.T) {
 	for data := range unflattenerTestData {
-		// 1. Prepare Source (FlattenedTable)
-		sourceTable := toFlattenedTable(data.SourceTable)
+		t.Run(data.TestTitle, func(t *testing.T) {
+			// 1. Prepare Source (FlattenedTable)
+			sourceTable := toFlattenedTable(data.SourceTable)
 
-		// 2. Prepare Destination
-		destination := object.NewObject()
-		if data.Schema == nil {
-			destination = destination.WithSourceInterface(reflect.New(reflect.TypeOf(data.ExpectedResult)).Elem().Interface())
-		} else {
-			destination = destination.WithSchema(data.Schema)
-		}
+			// 2. Prepare Destination
+			destination := object.NewObject()
+			if data.Schema == nil {
+				destination = destination.WithSourceInterface(reflect.New(reflect.TypeOf(data.ExpectedResult)).Elem().Interface())
+			} else {
+				destination = destination.WithSchema(data.Schema)
+			}
 
-		// 3. Initialize Unflattener
-		u := NewUnflattener(data.MetadataModel, NewSignature())
+			// 3. Initialize Unflattener
+			u := NewUnflattener(data.MetadataModel, NewSignature())
 
-		if data.ColumnFields != nil {
-			u.WithColumnFields(data.ColumnFields)
-		}
+			if data.ColumnFields != nil {
+				u.WithColumnFields(data.ColumnFields)
+			}
 
-		u.WithDestination(destination)
+			u.WithDestination(destination)
 
-		// 4. Run Unflatten
-		err := u.Unflatten(sourceTable)
-		if err != nil {
-			t.Errorf("%s: Unflatten() unexpected error: %v", data.TestTitle, err)
-			continue
-		}
+			// 4. Run Unflatten
+			err := u.Unflatten(sourceTable)
+			if err != nil {
+				t.Fatalf("Unflatten() unexpected error: %v", err)
+			}
 
-		// 5. Validate Result
-		actualResult := destination.GetSourceInterface()
-		if !reflect.DeepEqual(actualResult, data.ExpectedResult) {
-			t.Errorf("%s: Result mismatch.\nExpected:\n%#v\nGot:\n%#v",
-				data.TestTitle,
-				data.ExpectedResult,
-				actualResult,
-			)
-		}
+			// 5. Validate Result
+			actualResult := destination.GetSourceInterface()
+			if !reflect.DeepEqual(actualResult, data.ExpectedResult) {
+				t.Errorf("Result mismatch.\nExpected:\n%#v\nGot:\n%#v",
+					data.ExpectedResult,
+					actualResult,
+				)
+			}
+		})
 	}
 }
 

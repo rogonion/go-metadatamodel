@@ -30,6 +30,7 @@ Parameters:
 */
 type ConditionTrue func(ctx FilterContext, fieldGroupJsonPathKey path.JSONPath, filterCondition string, valueFound reflect.Value, filterValue gojsoncore.JsonObject) (bool, error)
 
+// FilterContext represents the context in which a filter is executed.
 /*
 FilterContext represents the current module processing the query.
 */
@@ -41,6 +42,7 @@ type FilterContext interface {
 	SilenceErrors() bool
 }
 
+// Constants for filter condition properties.
 const (
 	FilterConditionValue            string = "Value"
 	FilterConditionValues           string = "Values"
@@ -49,6 +51,7 @@ const (
 	FilterConditionAssumedFieldType string = "AssumedFieldType"
 )
 
+// Constants for query condition properties.
 const (
 	QueryConditionType   string = "Type"
 	QueryConditionNegate string = "Negate"
@@ -63,15 +66,18 @@ const (
 	QuerySectionTypeFieldGroup      string = "FieldGroup"
 )
 
+// Constants for logical operators.
 const (
 	QuerySectionTypeLogicalOperatorAnd string = "And"
 	QuerySectionTypeLogicalOperatorOr  string = "Or"
 )
 
+// LogicalOperators returns a list of supported logical operators.
 func LogicalOperators() []string {
 	return []string{QuerySectionTypeLogicalOperatorAnd, QuerySectionTypeLogicalOperatorOr}
 }
 
+// GetQuerySectionTypeLogicalOperator retrieves the logical operator from the query condition.
 func GetQuerySectionTypeLogicalOperator(queryCondition gojsoncore.JsonObject) (string, error) {
 	logicalOperator := QuerySectionTypeLogicalOperatorAnd
 	if value, ok := queryCondition[QuerySectionTypeLogicalOperator].(string); ok {
@@ -135,6 +141,7 @@ var (
 	ErrFilterConditionPropertyNotFound = errors.New("filter condition property not found")
 )
 
+// NewError creates a new core.Error with the default filter error base.
 func NewError() *core.Error {
 	n := core.NewError().WithDefaultBaseError(ErrFilterError)
 	return n

@@ -9,6 +9,7 @@ import (
 	"github.com/rogonion/go-json/schema"
 )
 
+// IsNumberConditionTrue checks if a number condition is met.
 func IsNumberConditionTrue(ctx FilterContext, _ path.JSONPath, filterCondition string, valueFound reflect.Value, filterValue gojsoncore.JsonObject) (bool, error) {
 	const FunctionName = "IsNumberConditionTrue"
 

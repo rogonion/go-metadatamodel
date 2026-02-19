@@ -17,6 +17,7 @@ var (
 	ErrDatabaseFieldValueError = errors.New("database manipulate field value error")
 )
 
+// NewError creates a new core.Error with the default database error base.
 func NewError() *core.Error {
 	n := core.NewError().WithDefaultBaseError(ErrDatabaseError)
 	return n

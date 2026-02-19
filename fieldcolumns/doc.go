@@ -42,11 +42,6 @@ After extracting metadata model fields into ColumnFields, you can reposition the
 	var columnFields *ColumnFields
 	columnFields.Reposition()
 
-2. Optionally, update ColumnField.IndexInRepositionedColumnFields of each ColumnFields.Fields.
-
-	var columnFields *ColumnFields
-	columnFields.UpdateIndexInRepositionedColumnFieldsInColumnField()
-
 ## ColumnFields.Skip
 
 Set the ColumnField.Skip of each ColumnFields.Fields.

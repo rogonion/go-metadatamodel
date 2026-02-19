@@ -9,6 +9,7 @@ import (
 	"github.com/rogonion/go-json/path"
 )
 
+// IsTextConditionTrue checks if a text condition is met.
 func IsTextConditionTrue(ctx FilterContext, _ path.JSONPath, filterCondition string, valueFound reflect.Value, filterValue gojsoncore.JsonObject) (bool, error) {
 	const FunctionName = "IsTextConditionTrue"
 

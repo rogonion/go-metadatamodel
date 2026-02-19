@@ -11,6 +11,8 @@ import (
 	"github.com/rogonion/go-metadatamodel/testdata"
 )
 
+// TestGroupsColumnsIndexesRetrieval_Get tests the extraction of primary key and all column indexes
+// from various metadata models (Product, Company, Employee).
 func TestGroupsColumnsIndexesRetrieval_Get(t *testing.T) {
 	for testData := range groupsColumnsIndexesRetrievalTestData {
 		// 1. Extract ColumnFields first (dependency)
@@ -57,7 +59,7 @@ func groupsColumnsIndexesRetrievalTestData(yield func(data *groupsColumnsIndexes
 	// Case 1: Product metadata model
 	if !yield(&groupsColumnsIndexesRetrievalData{
 		TestData: internal.TestData{
-			TestTitle: "Product",
+			TestTitle: "Product Metadata Model - Default Keys",
 		},
 		MetadataModel: testdata.ProductMetadataModel(nil),
 		ExpectedOk:    true,
@@ -72,7 +74,7 @@ func groupsColumnsIndexesRetrievalTestData(yield func(data *groupsColumnsIndexes
 	// Case 2: Company metadata model
 	if !yield(&groupsColumnsIndexesRetrievalData{
 		TestData: internal.TestData{
-			TestTitle: "Company",
+			TestTitle: "Company Metadata Model - Default Keys",
 		},
 		MetadataModel: testdata.CompanyMetadataModel(nil),
 		ExpectedOk:    true,
@@ -94,7 +96,7 @@ func groupsColumnsIndexesRetrievalTestData(yield func(data *groupsColumnsIndexes
 	// Case 3: Employee metadata model
 	if !yield(&groupsColumnsIndexesRetrievalData{
 		TestData: internal.TestData{
-			TestTitle: "Employee with groups as primary keys",
+			TestTitle: "Employee Metadata Model - Nested Group 'UserProfile' as Primary Key",
 		},
 		MetadataModel: employeeMetadataModel,
 		ExpectedOk:    true,

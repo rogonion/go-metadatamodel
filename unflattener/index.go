@@ -11,10 +11,8 @@ import (
 	"github.com/rogonion/go-metadatamodel/flattener"
 )
 
-/*
-GenerateSignature creates a deterministic unique key for a set of columns (the PKs).
-It uses the Signature.joinSymbol separator to prevent concatenation collisions.
-*/
+// GenerateSignature creates a deterministic unique key for a set of columns (the PKs).
+// It uses the Signature.joinSymbol separator to prevent concatenation collisions.
 func (n *Signature) GenerateSignature(row flattener.FlattenedRow, readOrderOfRow []int) string {
 	// Optimization: Singleton groups (no PK) always return empty string
 	if len(readOrderOfRow) == 0 {
@@ -76,24 +74,29 @@ func (n *Signature) GenerateSignature(row flattener.FlattenedRow, readOrderOfRow
 	return b.String()
 }
 
+// WithConverter sets the schema converter used for generating signatures from non-primitive types.
 func (n *Signature) WithConverter(value *schema.Conversion) *Signature {
 	n.SetConverter(value)
 	return n
 }
 
+// SetConverter sets the schema converter.
 func (n *Signature) SetConverter(value *schema.Conversion) {
 	n.converter = value
 }
 
+// WithJoinSymbol sets the separator symbol used in signatures.
 func (n *Signature) WithJoinSymbol(value byte) *Signature {
 	n.SetJoinSymbol(value)
 	return n
 }
 
+// SetJoinSymbol sets the separator symbol.
 func (n *Signature) SetJoinSymbol(value byte) {
 	n.joinSymbol = value
 }
 
+// NewSignature creates a new Signature instance with default settings.
 func NewSignature() *Signature {
 	n := new(Signature)
 	n.SetJoinSymbol('|')
@@ -105,12 +108,14 @@ func NewSignature() *Signature {
 	return n
 }
 
+// Signature handles the generation of unique keys (signatures) for rows based on primary key columns.
 type Signature struct {
 	converter       *schema.Conversion
 	signatureSchema *schema.DynamicSchemaNode
 	joinSymbol      byte
 }
 
+// GetOrCreateGroup retrieves or creates a child GroupCollection for a specific nested group suffix.
 func (n *GroupIndexNode) GetOrCreateGroup(suffix string) *GroupCollection {
 	if groupCollection, exists := n.Groups[suffix]; exists {
 		return groupCollection
@@ -125,9 +130,7 @@ func (n *GroupIndexNode) GetOrCreateGroup(suffix string) *GroupCollection {
 	return newGroupCollection
 }
 
-/*
-GroupIndexNode represents a specific instance of an element (e.g., "Employee #1").
-*/
+// GroupIndexNode represents a specific instance of an element (e.g., "Employee #1").
 type GroupIndexNode struct {
 	JsonPathKey path.JSONPath
 
@@ -139,8 +142,10 @@ type GroupIndexNode struct {
 	Groups GroupIndexNodeGroups
 }
 
+// GroupIndexNodeGroups is a map of nested group collections.
 type GroupIndexNodeGroups map[string]*GroupCollection
 
+// GetOrCreateInstance retrieves or creates a GroupIndexNode for a given signature (Primary Key).
 func (n *GroupCollection) GetOrCreateInstance(signature string, jsonPath path.JSONPath) (*GroupIndexNode, int) {
 	if instance, exists := n.Instances[signature]; exists {
 		return instance, instance.MyIndex
@@ -160,12 +165,10 @@ func (n *GroupCollection) GetOrCreateInstance(signature string, jsonPath path.JS
 	return newInstance, newIdx
 }
 
-/*
-GroupCollection represents a "List" of child nodes of a specific type.
-(e.g., The list of Addresses belonging to Employee #1)
-
-It holds the state required to append new items to this specific list.
-*/
+// GroupCollection represents a "List" of child nodes of a specific type.
+// (e.g., The list of Addresses belonging to Employee #1)
+//
+// It holds the state required to append new items to this specific list.
 type GroupCollection struct {
 	// The Counter: Tracks the next available index for this list.
 	NextIndex int
@@ -175,4 +178,5 @@ type GroupCollection struct {
 	Instances GroupCollectionInstances
 }
 
+// GroupCollectionInstances is a map of group instances keyed by their signature.
 type GroupCollectionInstances map[string]*GroupIndexNode

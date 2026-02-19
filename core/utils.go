@@ -10,6 +10,7 @@ import (
 	"github.com/rogonion/go-json/schema"
 )
 
+// MergeRightJsonObjectIntoLeft merges the right JsonObject into the left JsonObject.
 func MergeRightJsonObjectIntoLeft(left gojsoncore.JsonObject, right gojsoncore.JsonObject) {
 	if left != nil {
 		for k, v := range right {
@@ -18,6 +19,7 @@ func MergeRightJsonObjectIntoLeft(left gojsoncore.JsonObject, right gojsoncore.J
 	}
 }
 
+// DoesFieldGroupFieldsContainNestedGroupFields checks if the field group contains nested group fields.
 func DoesFieldGroupFieldsContainNestedGroupFields(fg any) bool {
 	if groupFields, err := GetGroupFields(fg); err == nil {
 		if groupReadOrderOfFields, err := GetGroupReadOrderOfFields(fg); err == nil {
@@ -65,6 +67,7 @@ func GetMaximumFlatNoOfColumns(fg any) (int, error) {
 	return fgViewMaxNoOfValuesInSeparateColumns, nil
 }
 
+// IfKeySuffixMatchesValues checks if the key suffix matches any of the values.
 func IfKeySuffixMatchesValues(keyToCheck string, valuesToMatch []string) bool {
 	for _, value := range valuesToMatch {
 		if strings.HasSuffix(keyToCheck, value) {
@@ -75,6 +78,7 @@ func IfKeySuffixMatchesValues(keyToCheck string, valuesToMatch []string) bool {
 	return false
 }
 
+// IsFieldAField checks if the input is a field (has FieldDataType and FieldUI).
 func IsFieldAField(f any) bool {
 	if field, err := AsJsonObject(f); err == nil {
 		if _, ok := field[FieldDataType].(string); ok {
@@ -87,6 +91,7 @@ func IsFieldAField(f any) bool {
 	return false
 }
 
+// IsFieldAGroup checks if the input is a group (has GroupReadOrderOfFields and GroupFields).
 func IsFieldAGroup(f any) bool {
 	if _, err := GetGroupReadOrderOfFields(f); err == nil {
 		if _, err := GetGroupFields(f); err == nil {
@@ -97,6 +102,7 @@ func IsFieldAGroup(f any) bool {
 	return false
 }
 
+// AsJSONPath converts the input to a JSONPath.
 func AsJSONPath(v any) (path.JSONPath, error) {
 	if value, ok := v.(path.JSONPath); ok {
 		return value, nil
@@ -109,6 +115,7 @@ func AsJSONPath(v any) (path.JSONPath, error) {
 	return "", ErrArgumentInvalid
 }
 
+// AsJsonObject converts the input to a JsonObject.
 func AsJsonObject(v any) (gojsoncore.JsonObject, error) {
 	if v, ok := v.(gojsoncore.JsonObject); ok {
 		return v, nil
@@ -121,6 +128,7 @@ func AsJsonObject(v any) (gojsoncore.JsonObject, error) {
 	return nil, ErrArgumentInvalid
 }
 
+// AsJsonArray converts the input to a JsonArray.
 func AsJsonArray(v any) (gojsoncore.JsonArray, error) {
 	if v, ok := v.(gojsoncore.JsonArray); ok {
 		return v, nil
@@ -133,6 +141,7 @@ func AsJsonArray(v any) (gojsoncore.JsonArray, error) {
 	return nil, ErrArgumentInvalid
 }
 
+// AsGroupReadOrderOfFields converts the input to MetadataModelGroupReadOrderOfFields.
 func AsGroupReadOrderOfFields(v any) (MetadataModelGroupReadOrderOfFields, error) {
 	if value, ok := v.(MetadataModelGroupReadOrderOfFields); ok {
 		return value, nil
@@ -157,6 +166,7 @@ func AsGroupReadOrderOfFields(v any) (MetadataModelGroupReadOrderOfFields, error
 	return nil, ErrArgumentInvalid
 }
 
+// GetGroupReadOrderOfFields retrieves the group read order of fields.
 func GetGroupReadOrderOfFields(fg any) (MetadataModelGroupReadOrderOfFields, error) {
 	if fgProperty, err := AsJsonObject(fg); err == nil {
 		return AsGroupReadOrderOfFields(fgProperty[GroupReadOrderOfFields])
@@ -165,6 +175,7 @@ func GetGroupReadOrderOfFields(fg any) (MetadataModelGroupReadOrderOfFields, err
 	return nil, ErrArgumentInvalid
 }
 
+// GetGroupFields retrieves the group fields.
 func GetGroupFields(fg any) (gojsoncore.JsonObject, error) {
 	if fgProperty, err := AsJsonObject(fg); err == nil {
 		if gFields, err := AsJsonArray(fgProperty[GroupFields]); err == nil {
@@ -181,6 +192,7 @@ func GetGroupFields(fg any) (gojsoncore.JsonObject, error) {
 	}
 }
 
+// GetFieldGroupName retrieves the field group name.
 func GetFieldGroupName(fg any, defaultValue string) string {
 	if fieldGroup, err := AsJsonObject(fg); err == nil {
 		if fieldGroupName, ok := fieldGroup[FieldGroupName].(string); ok && len(fieldGroupName) > 0 {
@@ -202,6 +214,7 @@ func GetFieldGroupName(fg any, defaultValue string) string {
 	return defaultValue
 }
 
+// GetFieldGroupJsonPathKeySuffix retrieves the suffix of the field group JSON path key.
 func GetFieldGroupJsonPathKeySuffix(fg any) string {
 	if fieldGroup, err := AsJsonObject(fg); err == nil {
 		if fieldGroupKey, err := AsJSONPath(fieldGroup[FieldGroupJsonPathKey]); err == nil {

@@ -101,6 +101,7 @@ func (n *GroupsColumnsIndexesRetrieval) recursiveSetPrimaryKeysFromGroupFields(g
 	return nil
 }
 
+// Get retrieves the column indexes (Primary and All) for a specific group within the metadata model.
 func (n *GroupsColumnsIndexesRetrieval) Get(group gojsoncore.JsonObject) (*GroupColumnIndexes, error) {
 	const FunctionName = "Get"
 	n.primary = make([]int, 0)
@@ -220,12 +221,14 @@ func (n *GroupsColumnsIndexesRetrieval) appendFieldColumnIndex(fieldColumnPositi
 	return nil
 }
 
+// NewGroupsColumnsIndexesRetrieval creates a new GroupsColumnsIndexesRetrieval instance.
 func NewGroupsColumnsIndexesRetrieval(columnFields *ColumnFields) *GroupsColumnsIndexesRetrieval {
 	return &GroupsColumnsIndexesRetrieval{
 		columnFields: columnFields,
 	}
 }
 
+// GroupsColumnsIndexesRetrieval is a helper to retrieve column indexes for a group.
 type GroupsColumnsIndexesRetrieval struct {
 	columnFields *ColumnFields
 	primary      []int

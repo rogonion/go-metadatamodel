@@ -34,8 +34,10 @@ type FieldGroupPropertiesFirstMatcher interface {
 	FirstMatch(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) bool
 }
 
+// FuncFieldGroupPropertiesMatcherFirst is a function type that implements FieldGroupPropertiesFirstMatcher.
 type FuncFieldGroupPropertiesMatcherFirst func(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) bool
 
+// FirstMatch calls the underlying function to check for a match.
 func (f FuncFieldGroupPropertiesMatcherFirst) FirstMatch(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) bool {
 	return f(fieldGroupPropertyValue, fieldGroup)
 }
@@ -76,8 +78,10 @@ type FieldGroupPropertiesMatchingProps interface {
 	MatchingProps(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) gojsoncore.JsonObject
 }
 
+// FuncFieldGroupPropertiesMatcherMatchingProps is a function type that implements FieldGroupPropertiesMatchingProps.
 type FuncFieldGroupPropertiesMatcherMatchingProps func(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) gojsoncore.JsonObject
 
+// MatchingProps calls the underlying function to retrieve matching properties.
 func (f FuncFieldGroupPropertiesMatcherMatchingProps) MatchingProps(fieldGroupPropertyValue any, fieldGroup gojsoncore.JsonObject) gojsoncore.JsonObject {
 	return f(fieldGroupPropertyValue, fieldGroup)
 }

@@ -316,42 +316,51 @@ func (n *DataFilter) isFieldGroupConditionTrue(jsonPathKey path.JSONPath, queryC
 	return orConditionTrue, nil
 }
 
+// WithMetadataModel sets the metadata model and returns the DataFilter.
 func (n *DataFilter) WithMetadataModel(value gojsoncore.JsonObject) *DataFilter {
 	n.SetMetadataModel(value)
 	return n
 }
 
+// SetMetadataModel sets the metadata model.
 func (n *DataFilter) SetMetadataModel(value gojsoncore.JsonObject) {
 	n.metadataModelObject = object.NewObject().WithSourceInterface(value)
 }
 
+// WithSourceData sets the source data and returns the DataFilter.
 func (n *DataFilter) WithSourceData(value *object.Object) *DataFilter {
 	n.SetSourceData(value)
 	return n
 }
 
+// SetSourceData sets the source data.
 func (n *DataFilter) SetSourceData(value *object.Object) {
 	n.sourceData = value
 }
 
+// WithDefaultFilterProcessors sets the default filter processors and returns the DataFilter.
 func (n *DataFilter) WithDefaultFilterProcessors(value FilterProcessors) *DataFilter {
 	n.SetDefaultFilterProcessors(value)
 	return n
 }
 
+// SetDefaultFilterProcessors sets the default filter processors.
 func (n *DataFilter) SetDefaultFilterProcessors(value FilterProcessors) {
 	n.defaultFilterProcessors = value
 }
 
+// WithSilenceErrors sets whether to silence errors and returns the DataFilter.
 func (n *DataFilter) WithSilenceErrors(value bool) *DataFilter {
 	n.SetSilenceErrors(value)
 	return n
 }
 
+// SetSilenceErrors sets whether to silence errors.
 func (n *DataFilter) SetSilenceErrors(value bool) {
 	n.silenceAllErrors = value
 }
 
+// GetFieldGroupByJsonPathKey retrieves the field group definition for a given JSON path.
 func (n *DataFilter) GetFieldGroupByJsonPathKey(jsonPath path.JSONPath) (gojsoncore.JsonObject, error) {
 	const FunctionName = "GetFieldGroupByJsonPathKey"
 
@@ -372,6 +381,7 @@ func (n *DataFilter) GetFieldGroupByJsonPathKey(jsonPath path.JSONPath) (gojsonc
 	}
 }
 
+// SilenceErrors returns whether errors should be silenced.
 func (n *DataFilter) SilenceErrors() bool {
 	return n.silenceAllErrors
 }

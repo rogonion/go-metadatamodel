@@ -10,6 +10,7 @@ import (
 	"github.com/rogonion/go-metadatamodel/core"
 )
 
+// IsConditionTrue dispatches the condition check to the appropriate type-specific function.
 func IsConditionTrue(ctx FilterContext, fieldGroupJsonPathKey path.JSONPath, filterCondition string, valueFound reflect.Value, filterValue gojsoncore.JsonObject) (bool, error) {
 	const FunctionName = "IsConditionTrue"
 
@@ -78,6 +79,7 @@ func IsConditionTrue(ctx FilterContext, fieldGroupJsonPathKey path.JSONPath, fil
 	}
 }
 
+// IsNumberOfEntriesConditionTrue checks conditions related to the number of entries in a collection.
 func IsNumberOfEntriesConditionTrue(ctx FilterContext, _ path.JSONPath, filterCondition string, valueFound reflect.Value, filterValue gojsoncore.JsonObject) (bool, error) {
 	const FunctionName = "IsNumberOfEntriesConditionTrue"
 
@@ -156,6 +158,7 @@ func IsNumberOfEntriesConditionTrue(ctx FilterContext, _ path.JSONPath, filterCo
 	return false, nil
 }
 
+// IsDefaultEqualTrue checks for equality using reflect.DeepEqual.
 func IsDefaultEqualTrue(ctx FilterContext, _ path.JSONPath, filterCondition string, valueFound reflect.Value, filterValue gojsoncore.JsonObject) (bool, error) {
 	if !valueFound.IsValid() {
 		return false, nil

@@ -99,6 +99,7 @@ func (n *Unflattener) recursiveConvert(groupIndexTree *RecursiveGroupIndexTree, 
 	return nil
 }
 
+// Unflatten processes the source FlattenedTable and reconstructs the object graph into the destination.
 func (n *Unflattener) Unflatten(source flattener.FlattenedTable) error {
 	const FunctionName = "Unflatten"
 
@@ -211,24 +212,29 @@ func (n *Unflattener) recursiveInitGroupIndexTree(group any, groupJsonPathKey pa
 	return groupIndexTree, nil
 }
 
+// WithDestination sets the destination object where the unflattened data will be written.
 func (n *Unflattener) WithDestination(value *object.Object) *Unflattener {
 	n.SetDestination(value)
 	return n
 }
 
+// SetDestination sets the destination object.
 func (n *Unflattener) SetDestination(value *object.Object) {
 	n.destination = value
 }
 
+// WithColumnFields sets the column fields definition.
 func (n *Unflattener) WithColumnFields(value *fieldcolumns.ColumnFields) *Unflattener {
 	n.SetColumnFields(value)
 	return n
 }
 
+// SetColumnFields sets the column fields definition.
 func (n *Unflattener) SetColumnFields(value *fieldcolumns.ColumnFields) {
 	n.columnFields = value
 }
 
+// NewUnflattener creates a new Unflattener instance.
 func NewUnflattener(metadataModel gojsoncore.JsonObject, signature *Signature) *Unflattener {
 	return &Unflattener{
 		metadataModel: metadataModel,
@@ -236,9 +242,7 @@ func NewUnflattener(metadataModel gojsoncore.JsonObject, signature *Signature) *
 	}
 }
 
-/*
-Unflattener converts a 2 dimension linear collection (like a 2D array) into a deeply nested mix of associative collections (like an array of objects).
-*/
+// Unflattener converts a 2 dimension linear collection (like a 2D array) into a deeply nested mix of associative collections (like an array of objects).
 type Unflattener struct {
 	metadataModel gojsoncore.JsonObject
 
@@ -268,9 +272,7 @@ type Unflattener struct {
 	recursiveIndexTree *RecursiveGroupIndexTree
 }
 
-/*
-RecursiveGroupIndexTree represents tree of field/groups to read for Unflattener.
-*/
+// RecursiveGroupIndexTree represents tree of field/groups to read for Unflattener.
 type RecursiveGroupIndexTree struct {
 	FieldColumnPosition *fieldcolumns.FieldColumnPosition
 

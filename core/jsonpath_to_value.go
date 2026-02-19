@@ -49,29 +49,35 @@ func (n *JsonPathToValue) Get(jsonPathKey path.JSONPath, arrayIndexes []int) (pa
 	return path.JSONPath(jsonPathKeyStr), nil
 }
 
+// WithReplaceArrayPathPlaceholderWithActualIndexes sets whether to replace the array path placeholder with actual indexes.
 func (n *JsonPathToValue) WithReplaceArrayPathPlaceholderWithActualIndexes(value bool) *JsonPathToValue {
 	n.SetReplaceArrayPathPlaceholderWithActualIndexes(value)
 	return n
 }
 
+// SetReplaceArrayPathPlaceholderWithActualIndexes sets whether to replace the array path placeholder with actual indexes.
 func (n *JsonPathToValue) SetReplaceArrayPathPlaceholderWithActualIndexes(value bool) {
 	n.replaceArrayPathPlaceholderWithActualIndexes = value
 }
 
+// WithSourceOfValueIsAnArray sets whether the source of the value is an array.
 func (n *JsonPathToValue) WithSourceOfValueIsAnArray(value bool) *JsonPathToValue {
 	n.SetSourceOfValueIsAnArray(value)
 	return n
 }
 
+// SetSourceOfValueIsAnArray sets whether the source of the value is an array.
 func (n *JsonPathToValue) SetSourceOfValueIsAnArray(value bool) {
 	n.sourceOfValueIsAnArray = value
 }
 
+// WithRemoveGroupFields sets whether to remove group fields from the path.
 func (n *JsonPathToValue) WithRemoveGroupFields(value bool) *JsonPathToValue {
 	n.SetRemoveGroupFields(value)
 	return n
 }
 
+// SetRemoveGroupFields sets whether to remove group fields from the path.
 func (n *JsonPathToValue) SetRemoveGroupFields(value bool) {
 	n.removeGroupFields = value
 }

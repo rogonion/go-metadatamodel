@@ -2,7 +2,6 @@ package database
 
 import (
 	"errors"
-	"fmt"
 	"reflect"
 	"testing"
 
@@ -80,10 +79,11 @@ type getColumnFieldsData struct {
 
 func getColumnFieldsTestData(yield func(data *getColumnFieldsData) bool) {
 	currentMetadataModel := testdata.ProductMetadataModel(nil)
-	testCase := 1
+	// Case 1: Product Metadata Model
+	// Scenario: Extract fields for "Product" table collection using UID.
 	if !yield(&getColumnFieldsData{
 		TestData: internal.TestData{
-			TestTitle: fmt.Sprintf("Case %v: %v MetadataModel", testCase, currentMetadataModel[core.FieldGroupName]),
+			TestTitle: "Product MetadataModel (By UID)",
 		},
 		MetadataModel:      currentMetadataModel,
 		TableCollectionUid: gojsoncore.Ptr(currentMetadataModel[core.FieldGroupName].(string)),
@@ -94,9 +94,9 @@ func getColumnFieldsTestData(yield func(data *getColumnFieldsData) bool) {
 			iter.ForEach(currentMetadataModel, func(fieldGroup gojsoncore.JsonObject) (bool, bool) {
 				if tableCollectionUid, ok := fieldGroup[core.DatabaseTableCollectionUid].(string); ok && tableCollectionUid == currentMetadataModel[core.FieldGroupName] {
 					if !core.IsFieldAGroup(fieldGroup) {
-						fieldGroupJsonPathKeySuffix := core.GetFieldGroupJsonPathKeySuffix(fieldGroup)
-						columnFields.ColumnFieldsReadOrder = append(columnFields.ColumnFieldsReadOrder, fieldGroupJsonPathKeySuffix)
-						columnFields.Fields[fieldGroupJsonPathKeySuffix] = fieldGroup
+						fieldColumnName := fieldGroup[core.DatabaseFieldColumnName].(string)
+						columnFields.ColumnFieldsReadOrder = append(columnFields.ColumnFieldsReadOrder, fieldColumnName)
+						columnFields.Fields[fieldColumnName] = fieldGroup
 					}
 					return false, false
 				}
@@ -110,10 +110,11 @@ func getColumnFieldsTestData(yield func(data *getColumnFieldsData) bool) {
 	}
 
 	currentMetadataModel = testdata.CompanyMetadataModel(nil)
-	testCase++
+	// Case 2: Company Metadata Model
+	// Scenario: Extract fields for "Company" table collection using Name and JoinDepth.
 	if !yield(&getColumnFieldsData{
 		TestData: internal.TestData{
-			TestTitle: fmt.Sprintf("Case %v: %v MetadataModel", testCase, currentMetadataModel[core.FieldGroupName]),
+			TestTitle: "Company MetadataModel (By Name & JoinDepth)",
 		},
 		MetadataModel:       currentMetadataModel,
 		JoinDepth:           gojsoncore.Ptr(int64(0)),
@@ -126,9 +127,9 @@ func getColumnFieldsTestData(yield func(data *getColumnFieldsData) bool) {
 				if joinDepth, ok := fieldGroup[core.DatabaseJoinDepth].(float64); ok && joinDepth == float64(0) {
 					if tableCollectionName, ok := fieldGroup[core.DatabaseTableCollectionName].(string); ok && tableCollectionName == currentMetadataModel[core.FieldGroupName] {
 						if !core.IsFieldAGroup(fieldGroup) {
-							fieldGroupJsonPathKeySuffix := core.GetFieldGroupJsonPathKeySuffix(fieldGroup)
-							columnFields.ColumnFieldsReadOrder = append(columnFields.ColumnFieldsReadOrder, fieldGroupJsonPathKeySuffix)
-							columnFields.Fields[fieldGroupJsonPathKeySuffix] = fieldGroup
+							fieldColumnName := fieldGroup[core.DatabaseFieldColumnName].(string)
+							columnFields.ColumnFieldsReadOrder = append(columnFields.ColumnFieldsReadOrder, fieldColumnName)
+							columnFields.Fields[fieldColumnName] = fieldGroup
 						}
 						return false, false
 					}
@@ -143,10 +144,11 @@ func getColumnFieldsTestData(yield func(data *getColumnFieldsData) bool) {
 	}
 
 	currentMetadataModel = testdata.UserProfileMetadataModel(nil)
-	testCase++
+	// Case 3: UserProfile Metadata Model
+	// Scenario: Extract fields for "UserProfile" table collection using Name and JoinDepth.
 	if !yield(&getColumnFieldsData{
 		TestData: internal.TestData{
-			TestTitle: fmt.Sprintf("Case %v: %v MetadataModel", testCase, currentMetadataModel[core.FieldGroupName]),
+			TestTitle: "UserProfile MetadataModel (By Name & JoinDepth)",
 		},
 		MetadataModel:       currentMetadataModel,
 		JoinDepth:           gojsoncore.Ptr(int64(0)),
@@ -159,9 +161,9 @@ func getColumnFieldsTestData(yield func(data *getColumnFieldsData) bool) {
 				if joinDepth, ok := fieldGroup[core.DatabaseJoinDepth].(float64); ok && joinDepth == float64(0) {
 					if tableCollectionName, ok := fieldGroup[core.DatabaseTableCollectionName].(string); ok && tableCollectionName == currentMetadataModel[core.FieldGroupName] {
 						if !core.IsFieldAGroup(fieldGroup) {
-							fieldGroupJsonPathKeySuffix := core.GetFieldGroupJsonPathKeySuffix(fieldGroup)
-							columnFields.ColumnFieldsReadOrder = append(columnFields.ColumnFieldsReadOrder, fieldGroupJsonPathKeySuffix)
-							columnFields.Fields[fieldGroupJsonPathKeySuffix] = fieldGroup
+							fieldColumnName := fieldGroup[core.DatabaseFieldColumnName].(string)
+							columnFields.ColumnFieldsReadOrder = append(columnFields.ColumnFieldsReadOrder, fieldColumnName)
+							columnFields.Fields[fieldColumnName] = fieldGroup
 						}
 						return false, false
 					}
@@ -176,10 +178,11 @@ func getColumnFieldsTestData(yield func(data *getColumnFieldsData) bool) {
 	}
 
 	currentMetadataModel = testdata.EmployeeMetadataModel(nil)
-	testCase++
+	// Case 4: Employee Metadata Model (Profile)
+	// Scenario: Extract fields for "Profile" table collection within Employee model using UID.
 	if !yield(&getColumnFieldsData{
 		TestData: internal.TestData{
-			TestTitle: fmt.Sprintf("Case %v: %v MetadataModel", testCase, currentMetadataModel[core.FieldGroupName]),
+			TestTitle: "Employee MetadataModel - Profile Collection (By UID)",
 		},
 		MetadataModel:      currentMetadataModel,
 		TableCollectionUid: gojsoncore.Ptr("Profile"),
@@ -190,9 +193,9 @@ func getColumnFieldsTestData(yield func(data *getColumnFieldsData) bool) {
 			iter.ForEach(currentMetadataModel, func(fieldGroup gojsoncore.JsonObject) (bool, bool) {
 				if tableCollectionUid, ok := fieldGroup[core.DatabaseTableCollectionUid].(string); ok && tableCollectionUid == "Profile" {
 					if !core.IsFieldAGroup(fieldGroup) {
-						fieldGroupJsonPathKeySuffix := core.GetFieldGroupJsonPathKeySuffix(fieldGroup)
-						columnFields.ColumnFieldsReadOrder = append(columnFields.ColumnFieldsReadOrder, fieldGroupJsonPathKeySuffix)
-						columnFields.Fields[fieldGroupJsonPathKeySuffix] = fieldGroup
+						fieldColumnName := fieldGroup[core.DatabaseFieldColumnName].(string)
+						columnFields.ColumnFieldsReadOrder = append(columnFields.ColumnFieldsReadOrder, fieldColumnName)
+						columnFields.Fields[fieldColumnName] = fieldGroup
 					}
 					return false, false
 				}
@@ -205,10 +208,11 @@ func getColumnFieldsTestData(yield func(data *getColumnFieldsData) bool) {
 		return
 	}
 
-	testCase++
+	// Case 5: Employee Metadata Model (Profile) with Add Filter
+	// Scenario: Extract fields for "Profile" table collection but ONLY include "Age" field.
 	if !yield(&getColumnFieldsData{
 		TestData: internal.TestData{
-			TestTitle: fmt.Sprintf("Case %v: %v MetadataModel with add", testCase, currentMetadataModel[core.FieldGroupName]),
+			TestTitle: "Employee MetadataModel - Profile Collection (By UID) with Add Filter (Age)",
 		},
 		MetadataModel:      currentMetadataModel,
 		TableCollectionUid: gojsoncore.Ptr("Profile"),
@@ -223,9 +227,9 @@ func getColumnFieldsTestData(yield func(data *getColumnFieldsData) bool) {
 				if tableCollectionUid, ok := fieldGroup[core.DatabaseTableCollectionUid].(string); ok && tableCollectionUid == "Profile" {
 					if !core.IsFieldAGroup(fieldGroup) {
 						if fieldGroup[core.DatabaseFieldColumnName] == "Age" {
-							fieldGroupJsonPathKeySuffix := core.GetFieldGroupJsonPathKeySuffix(fieldGroup)
-							columnFields.ColumnFieldsReadOrder = append(columnFields.ColumnFieldsReadOrder, fieldGroupJsonPathKeySuffix)
-							columnFields.Fields[fieldGroupJsonPathKeySuffix] = fieldGroup
+							fieldColumnName := fieldGroup[core.DatabaseFieldColumnName].(string)
+							columnFields.ColumnFieldsReadOrder = append(columnFields.ColumnFieldsReadOrder, fieldColumnName)
+							columnFields.Fields[fieldColumnName] = fieldGroup
 						}
 					}
 					return false, false

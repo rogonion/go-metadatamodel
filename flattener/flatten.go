@@ -12,9 +12,7 @@ import (
 	"github.com/rogonion/go-metadatamodel/fieldcolumns"
 )
 
-/*
-WriteToDestination A general purpose function for writing current FlattenedTable to object.Object.
-*/
+// WriteToDestination writes the current FlattenedTable to the destination object.
 func (n *Flattener) WriteToDestination(destination *object.Object) error {
 	const FunctionName = "WriteToDestination"
 
@@ -193,13 +191,11 @@ func (n *Flattener) mergeCellValueIntoRows(rows FlattenedTable, cellValue reflec
 	return newRows
 }
 
-/*
-Flatten processes the sourceObject and populates the internal Flattener.currentSourceObjectResult.
-
-Once the process is successful, you can call Flattener.GetResult to retrieve the FlattenedTable or Flattener.WriteToDestination.
-
-For preset Flattener.columnFields, ensure fieldcolumns.ColumnFields.UnskippedReadOrderOfColumnFields is set.
-*/
+// Flatten processes the sourceObject and populates the internal Flattener.currentSourceObjectResult.
+//
+// Once the process is successful, you can call Flattener.GetResult to retrieve the FlattenedTable or Flattener.WriteToDestination.
+//
+// For preset Flattener.columnFields, ensure fieldcolumns.ColumnFields.UnskippedReadOrderOfColumnFields is set.
 func (n *Flattener) Flatten(sourceObject *object.Object) error {
 	const FunctionName = "Flatten"
 
@@ -250,28 +246,22 @@ func (n *Flattener) Flatten(sourceObject *object.Object) error {
 	return nil
 }
 
-/*
-GetResult returns the raw FlattenedTable.
-This allows the user to read the results directly.
-*/
+// GetResult returns the raw FlattenedTable.
+// This allows the user to read the results directly.
 func (n *Flattener) GetResult() FlattenedTable {
 	return n.currentSourceObjectResult
 }
 
-/*
-Reset clears the internal state, allowing the Flattener to be reused for a new batch of data without carrying over previous results.
-*/
+// Reset clears the internal state, allowing the Flattener to be reused for a new batch of data without carrying over previous results.
 func (n *Flattener) Reset() {
 	// Re-initialize with capacity 0 but keeping the pointer if possible,
 	// or just make a fresh slice. Fresh slice is safer for GC.
 	n.currentSourceObjectResult = make(FlattenedTable, 0)
 }
 
-/*
-Generates a tree of the source object with the necessary data required to perform the conversion at each recursive step.
-
-Ignores if a field needs to be skipped or reordered to ensure proper merging of FlattenedTable generated at each recursive step.
-*/
+// recursiveInitRecursiveIndexTree generates a tree of the source object with the necessary data required to perform the conversion at each recursive step.
+//
+// Ignores if a field needs to be skipped or reordered to ensure proper merging of FlattenedTable generated at each recursive step.
 func (n *Flattener) recursiveInitRecursiveIndexTree(group any, groupJsonPathKey path.JSONPath) (*RecursiveIndexTree, error) {
 	const FunctionName = "recursiveInitRecursiveIndexTree"
 
@@ -405,15 +395,18 @@ func (n *Flattener) recursiveInitRecursiveIndexTree(group any, groupJsonPathKey 
 	return groupIndexTree, nil
 }
 
+// WithColumnFields sets the column fields to be used for flattening and returns the Flattener instance.
 func (n *Flattener) WithColumnFields(value *fieldcolumns.ColumnFields) *Flattener {
 	n.SetColumnFields(value)
 	return n
 }
 
+// SetColumnFields sets the column fields to be used for flattening.
 func (n *Flattener) SetColumnFields(value *fieldcolumns.ColumnFields) {
 	n.columnFields = value
 }
 
+// NewFlattener creates a new Flattener instance with the provided metadata model.
 func NewFlattener(metadataModel gojsoncore.JsonObject) *Flattener {
 	return &Flattener{
 		currentSourceObjectResult: make(FlattenedTable, 0),
@@ -421,25 +414,19 @@ func NewFlattener(metadataModel gojsoncore.JsonObject) *Flattener {
 	}
 }
 
-/*
-FlattenedRow represents a single row in a table.
-
-The flattener will attempt to enforce that each cell (column in row) is either a slice or array for uniformity.
-
-Default, empty or uninitialized cells are represented as an empty slice of type any ([]any{}).
-*/
+// FlattenedRow represents a single row in a table.
+//
+// The flattener will attempt to enforce that each cell (column in row) is either a slice or array for uniformity.
+//
+// Default, empty or uninitialized cells are represented as an empty slice of type any ([]any{}).
 type FlattenedRow []reflect.Value
 
-/*
-FlattenedTable represents a 2D linear collection.
-
-This is the result of flattening an object.
-*/
+// FlattenedTable represents a 2D linear collection.
+//
+// This is the result of flattening an object.
 type FlattenedTable []FlattenedRow
 
-/*
-Flattener converts a deeply nested mix of associative collections (like an array of objects) into a 2 dimension linear collection (like a 2D array).
-*/
+// Flattener converts a deeply nested mix of associative collections (like an array of objects) into a 2 dimension linear collection (like a 2D array).
 type Flattener struct {
 	metadataModel gojsoncore.JsonObject
 
@@ -463,15 +450,14 @@ type Flattener struct {
 	fieldGroupConversion *RecursiveIndexTree
 }
 
-/*
-RecursiveIndexTree represents tree of field/groups to read for Flattener.
-*/
+// RecursiveIndexTree represents tree of field/groups to read for Flattener.
 type RecursiveIndexTree struct {
 	FieldColumnPosition *fieldcolumns.FieldColumnPosition
 
 	GroupFields []*RecursiveIndexTree
 }
 
+// DefaultEmptyColumn returns a reflect.Value representing an empty column (nil slice of any).
 func DefaultEmptyColumn() reflect.Value {
 	return reflect.ValueOf([]any(nil))
 }

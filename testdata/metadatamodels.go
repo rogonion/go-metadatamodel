@@ -7,6 +7,8 @@ import (
 	"github.com/rogonion/go-metadatamodel/core"
 )
 
+// UserMetadataModel returns a metadata model for the User entity.
+// It defines fields: ID, Name, Email.
 func UserMetadataModel(rootProperties gojsoncore.JsonObject) gojsoncore.JsonObject {
 	const DefaultName = "User"
 
@@ -89,6 +91,8 @@ func UserMetadataModel(rootProperties gojsoncore.JsonObject) gojsoncore.JsonObje
 	})
 }
 
+// ProductMetadataModel returns a metadata model for the Product entity.
+// It defines fields: ID, Name, Price.
 func ProductMetadataModel(rootProperties gojsoncore.JsonObject) gojsoncore.JsonObject {
 	const DefaultName = "Product"
 
@@ -171,6 +175,8 @@ func ProductMetadataModel(rootProperties gojsoncore.JsonObject) gojsoncore.JsonO
 	})
 }
 
+// CompanyMetadataModel returns a metadata model for the Company entity.
+// It defines fields: Name, Employees (nested UserMetadataModel).
 func CompanyMetadataModel(rootProperties gojsoncore.JsonObject) gojsoncore.JsonObject {
 	const DefaultName = "Company"
 
@@ -237,6 +243,8 @@ func CompanyMetadataModel(rootProperties gojsoncore.JsonObject) gojsoncore.JsonO
 	})
 }
 
+// AddressMetadataModel returns a metadata model for the Address entity.
+// It defines fields: Street, City, ZipCode.
 func AddressMetadataModel(rootProperties gojsoncore.JsonObject) gojsoncore.JsonObject {
 	const DefaultName = "Address"
 
@@ -318,6 +326,8 @@ func AddressMetadataModel(rootProperties gojsoncore.JsonObject) gojsoncore.JsonO
 	})
 }
 
+// UserProfileMetadataModel returns a metadata model for the UserProfile entity.
+// It defines fields: Name, Age, Address (nested AddressMetadataModel).
 func UserProfileMetadataModel(rootProperties gojsoncore.JsonObject) gojsoncore.JsonObject {
 	const DefaultName = "UserProfile"
 
@@ -397,6 +407,8 @@ func UserProfileMetadataModel(rootProperties gojsoncore.JsonObject) gojsoncore.J
 	})
 }
 
+// EmployeeMetadataModel returns a metadata model for the Employee entity.
+// It defines fields: ID, Profile (nested UserProfileMetadataModel), Skills.
 func EmployeeMetadataModel(rootProperties gojsoncore.JsonObject) gojsoncore.JsonObject {
 	const DefaultName = "Employee"
 

@@ -14,6 +14,7 @@ var (
 	ErrNoGroupFields = errors.New("no group fields to extract found")
 )
 
+// NewError creates a new core.Error with the default flatten error base.
 func NewError() *core.Error {
 	n := core.NewError().WithDefaultBaseError(ErrFlattenError)
 	return n

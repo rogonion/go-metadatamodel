@@ -27,20 +27,29 @@ The following parameters can be set using the builder method (prefixed `With`) o
 
 2. Extract the database fields using GetColumnFields.Get.
 
+You can identify the target Table Collection in two ways:
+  - **By Unique ID**: Use `WithTableCollectionUID`. This is the most precise method if your metadata model assigns unique IDs to collections.
+  - **By Name & Join Depth**: Use `WithTableCollectionName` AND `WithJoinDepth`. This is useful when IDs are not available or when traversing a join hierarchy where the same table name might appear at different depths.
+
 Example:
 
+	import (
+		gojsoncore "github.com/rogonion/go-json/core"
+		"github.com/rogonion/go-metadatamodel/database"
+	)
+
 	// Set metadata model
-	var metadataModel core.JsonObject
+	var metadataModel gojsoncore.JsonObject
 
-	gcf := NewGetColumnFields()
+	gcf := database.NewGetColumnFields()
 
-	// Set
+	// Option A: Set by UID
 	gcf.SetTableCollectionUID("_12xoP1y")
-	// Or
-	gcf.SetJoinDepth(1)
-	gcf.SetTableCollectionName("User")
+	// Option B: Set by Name and Depth
+	// gcf.SetJoinDepth(1)
+	// gcf.SetTableCollectionName("User")
 
-	columnFields, err := gcf.Get(testData.MetadataModel)
+	columnFields, err := gcf.Get(metadataModel)
 
 ## FieldValue
 
@@ -50,6 +59,9 @@ Example:
 
 	import (
 		gojsoncore "github.com/rogonion/go-json/core"
+		"github.com/rogonion/go-json/object"
+		"github.com/rogonion/go-json/schema"
+		"github.com/rogonion/go-metadatamodel/database"
 	)
 
 	type Product struct {
@@ -59,7 +71,7 @@ Example:
 	}
 
 	// Set Product schema. Useful for instantiating nested collections
-	var sch schema.Schema
+	var sch *schema.DynamicSchemaNode
 
 	// Source object
 	var product *Product = &Product{
@@ -74,16 +86,16 @@ Example:
 
 	var columnFields *database.ColumnFields
 	var err error
-	columnFields, err = NewGetColumnFields().WithJoinDepth(0).WithTableCollectionName("Product").Get(productMetadataModel)
+	columnFields, err = database.NewGetColumnFields().WithJoinDepth(0).WithTableCollectionName("Product").Get(productMetadataModel)
 
 	// Module to perform get,set, or delete
 	var fieldValue *database.FieldValue = database.NewFieldValue(sourceData, columnFields)
 
-	var res any
-	var ok bool
+	var noOfResults uint64
 
 	// Get value of column `ID`
-	res, ok, err = fieldValue.Get("ID", "", nil)
+	// Returns number of results found (uint64) and error
+	noOfResults, err = fieldValue.Get("ID", "", nil)
 
 	var noOfModifications uint64
 

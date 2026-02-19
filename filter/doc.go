@@ -87,17 +87,23 @@ Below is an example query condition that is used to filter through data:
 
 Example filtering data usage:
 
+	import (
+		gojsoncore "github.com/rogonion/go-json/core"
+		"github.com/rogonion/go-json/object"
+		"github.com/rogonion/go-metadatamodel/filter"
+	)
+
 	// Set metadata model
 	var metadataModel gojsoncore.JsonObject
 
 	// Set source data
-	var sourceData *object.Object
+	sourceData := object.NewObject()
 
 	// Set query condition
 	var queryCondition gojsoncore.JsonObject
 
 	// Set other properties using builder pattern 'With' or 'Set'. Refer to filter.DataFilter structure.
-	var filterData *filter.DataFilter = filter.NewFilterData(sourceData, metadataModel)
+	filterData := filter.NewFilterData(sourceData, metadataModel)
 
 	var filterExcludeIndexes []int
 	var err error

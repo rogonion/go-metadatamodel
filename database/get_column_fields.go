@@ -86,29 +86,35 @@ func (n *GetColumnFields) Get(metadataModel any) (*ColumnFields, error) {
 	return n.columnFields, nil
 }
 
+// WithAdd sets the add property matcher.
 func (n *GetColumnFields) WithAdd(value core.FieldGroupPropertiesMatch) *GetColumnFields {
 	n.SetAdd(value)
 	return n
 }
 
+// SetAdd sets the add property matcher.
 func (n *GetColumnFields) SetAdd(value core.FieldGroupPropertiesMatch) {
 	n.add = value
 }
 
+// WithSkip sets the skip property matcher.
 func (n *GetColumnFields) WithSkip(value core.FieldGroupPropertiesMatch) *GetColumnFields {
 	n.SetSkip(value)
 	return n
 }
 
+// SetSkip sets the skip property matcher.
 func (n *GetColumnFields) SetSkip(value core.FieldGroupPropertiesMatch) {
 	n.skip = value
 }
 
+// WithJoinDepth sets the join depth.
 func (n *GetColumnFields) WithJoinDepth(value int64) *GetColumnFields {
 	n.SetJoinDepth(value)
 	return n
 }
 
+// SetJoinDepth sets the join depth.
 func (n *GetColumnFields) SetJoinDepth(value int64) {
 	if n.joinDepth == nil {
 		n.joinDepth = new(int64)
@@ -117,11 +123,13 @@ func (n *GetColumnFields) SetJoinDepth(value int64) {
 	n.isJoinDepthValid = true
 }
 
+// WithTableCollectionUID sets the table collection UID.
 func (n *GetColumnFields) WithTableCollectionUID(value string) *GetColumnFields {
 	n.SetTableCollectionUID(value)
 	return n
 }
 
+// SetTableCollectionUID sets the table collection UID.
 func (n *GetColumnFields) SetTableCollectionUID(value string) {
 	if n.tableCollectionUID == nil {
 		n.tableCollectionUID = new(string)
@@ -133,11 +141,13 @@ func (n *GetColumnFields) SetTableCollectionUID(value string) {
 	}
 }
 
+// WithTableCollectionName sets the table collection name.
 func (n *GetColumnFields) WithTableCollectionName(value string) *GetColumnFields {
 	n.SetTableCollectionName(value)
 	return n
 }
 
+// SetTableCollectionName sets the table collection name.
 func (n *GetColumnFields) SetTableCollectionName(value string) {
 	if n.tableCollectionName == nil {
 		n.tableCollectionName = new(string)
@@ -149,15 +159,18 @@ func (n *GetColumnFields) SetTableCollectionName(value string) {
 	}
 }
 
+// WithDefaultConverter sets the default converter.
 func (n *GetColumnFields) WithDefaultConverter(value schema.DefaultConverter) *GetColumnFields {
 	n.SetDefaultConverter(value)
 	return n
 }
 
+// SetDefaultConverter sets the default converter.
 func (n *GetColumnFields) SetDefaultConverter(value schema.DefaultConverter) {
 	n.defaultConverter = value
 }
 
+// NewGetColumnFields creates a new GetColumnFields instance with default settings.
 func NewGetColumnFields() *GetColumnFields {
 	n := new(GetColumnFields)
 	n.defaultConverter = schema.NewConversion()
@@ -207,6 +220,7 @@ type GetColumnFields struct {
 	defaultConverter schema.DefaultConverter
 }
 
+// NewColumnFields creates a new ColumnFields instance.
 func NewColumnFields() *ColumnFields {
 	n := new(ColumnFields)
 	n.ColumnFieldsReadOrder = make(core.MetadataModelGroupReadOrderOfFields, 0)

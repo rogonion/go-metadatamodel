@@ -8,6 +8,7 @@ import (
 	"github.com/rogonion/go-metadatamodel/testdata"
 )
 
+// TestDatabase_FieldValueOnEmployee tests setting a value on a nested field (Profile.Age) in the Employee struct.
 func TestDatabase_FieldValueOnEmployee(t *testing.T) {
 	employee := &testdata.Employee{
 		ID: []int{1},
@@ -38,6 +39,7 @@ func TestDatabase_FieldValueOnEmployee(t *testing.T) {
 	}
 }
 
+// TestDatabase_FieldValueOnProduct tests Get, Set, and Delete operations on the Product struct.
 func TestDatabase_FieldValueOnProduct(t *testing.T) {
 	product := &testdata.Product{
 		ID: []int{1},

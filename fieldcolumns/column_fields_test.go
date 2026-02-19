@@ -67,7 +67,7 @@ func skipTestData(yield func(data *skipData) bool) {
 	if !yield(
 		&skipData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+				TestTitle: "Skip 'Age' field in UserProfile",
 			},
 			MetadataModel: metadataModel,
 			ExpectedOk:    true,
@@ -109,7 +109,7 @@ func skipTestData(yield func(data *skipData) bool) {
 	if !yield(
 		&skipData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+				TestTitle: "Skip Pivoted Address Fields in UserProfile",
 			},
 			MetadataModel: metadataModel,
 			ExpectedOk:    true,
@@ -154,7 +154,7 @@ func skipTestData(yield func(data *skipData) bool) {
 		if !yield(
 			&skipData{
 				TestData: internal.TestData{
-					TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+					TestTitle: "Skip Nested Profile Fields in Employee",
 				},
 				MetadataModel: metadataModel,
 				ExpectedOk:    true,
@@ -219,7 +219,7 @@ func repositionTestData(yield func(data *repositionData) bool) {
 	if !yield(
 		&repositionData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+				TestTitle: "User Metadata Model - Default Order",
 			},
 			MetadataModel:                          metadataModel,
 			ExpectedOk:                             true,
@@ -234,7 +234,7 @@ func repositionTestData(yield func(data *repositionData) bool) {
 	if !yield(
 		&repositionData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+				TestTitle: "Employee Metadata Model - Default Order",
 			},
 			MetadataModel:                          metadataModel,
 			ExpectedOk:                             true,
@@ -259,7 +259,7 @@ func repositionTestData(yield func(data *repositionData) bool) {
 		if !yield(
 			&repositionData{
 				TestData: internal.TestData{
-					TestTitle: fmt.Sprintf("Test Case %d: Test property '%s' for group field that is a field", testCaseIndex, core.FieldGroupViewValuesInSeparateColumns),
+					TestTitle: fmt.Sprintf("UserProfile - Pivoted Address ('%s')", core.FieldGroupViewValuesInSeparateColumns),
 				},
 				MetadataModel:                          metadataModel,
 				ExpectedOk:                             true,
@@ -281,7 +281,7 @@ func repositionTestData(yield func(data *repositionData) bool) {
 	if !yield(
 		&repositionData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d: Test property '%s' for group field that is a field", testCaseIndex, core.FieldGroupViewValuesInSeparateColumns),
+				TestTitle: fmt.Sprintf("Product - Pivoted Name ('%s')", core.FieldGroupViewValuesInSeparateColumns),
 			},
 			MetadataModel:                          metadataModel,
 			ExpectedOk:                             true,
@@ -314,7 +314,7 @@ func repositionTestData(yield func(data *repositionData) bool) {
 		if !yield(
 			&repositionData{
 				TestData: internal.TestData{
-					TestTitle: fmt.Sprintf("Test Case %d: Test column positioning for 'Price' after 'ID'", testCaseIndex),
+					TestTitle: "Product - Reposition 'Price' after 'ID'",
 				},
 				MetadataModel:                          metadataModel,
 				ExpectedOk:                             true,
@@ -340,7 +340,7 @@ func repositionTestData(yield func(data *repositionData) bool) {
 		if !yield(
 			&repositionData{
 				TestData: internal.TestData{
-					TestTitle: fmt.Sprintf("Test Case %d: Test column positioning for 'Name' before 'ID'", testCaseIndex),
+					TestTitle: "Product - Reposition 'Name' before 'ID'",
 				},
 				MetadataModel:                          metadataModel,
 				ExpectedOk:                             true,
@@ -378,7 +378,7 @@ func repositionTestData(yield func(data *repositionData) bool) {
 		if !yield(
 			&repositionData{
 				TestData: internal.TestData{
-					TestTitle: fmt.Sprintf("Test Case %d: Test column positioning for 'Address' before 'Age'", testCaseIndex),
+					TestTitle: "UserProfile - Reposition 'Address' before 'Age'",
 				},
 				MetadataModel:                          metadataModel,
 				ExpectedOk:                             true,
@@ -416,7 +416,7 @@ func repositionTestData(yield func(data *repositionData) bool) {
 		if !yield(
 			&repositionData{
 				TestData: internal.TestData{
-					TestTitle: fmt.Sprintf("Test Case %d: Test column positioning for nested group 'Profile' after 'Skills'", testCaseIndex),
+					TestTitle: "Employee - Reposition Nested 'Profile' after 'Skills'",
 				},
 				MetadataModel:                          metadataModel,
 				ExpectedOk:                             true,

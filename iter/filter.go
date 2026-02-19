@@ -5,15 +5,11 @@ import (
 	"github.com/rogonion/go-metadatamodel/core"
 )
 
-/*
-Filter recursively remove fields in MetadataModel.
-
-Parameters:
-  - group - metadata model. Should be of type gojsoncore.JsonObject.
-  - Callback - called for each field in a metadata model.
-
-Returns modified group.
-*/
+// Filter recursively removes fields in MetadataModel.
+//
+// Parameters:
+//   - group: metadata model. Should be of type gojsoncore.JsonObject.
+//   - callback: called for each field in a metadata model.
 func Filter(group any, callback FilterCallback) any {
 	fieldGroupProp, err := core.AsJsonObject(group)
 	if err != nil {
@@ -60,14 +56,12 @@ func Filter(group any, callback FilterCallback) any {
 	return fieldGroupProp
 }
 
-/*
-FilterCallback called  for each field in a metadata model
-
-Parameters:
-  - fieldGroup - current Field/Group property.
-
-Returns:
- 1. `false` to signal fieldGroup should be removed.
- 2. `true` to skip processing fieldGroup fields if it contains them.
-*/
+// FilterCallback is called for each field in a metadata model.
+//
+// Parameters:
+//   - fieldGroup: current Field/Group property.
+//
+// Returns:
+//  1. `false` to signal fieldGroup should be removed.
+//  2. `true` to skip processing fieldGroup fields if it contains them.
 type FilterCallback func(fieldGroup gojsoncore.JsonObject) (bool, bool)

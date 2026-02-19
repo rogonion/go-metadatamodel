@@ -5,13 +5,11 @@ import (
 	"github.com/rogonion/go-metadatamodel/core"
 )
 
-/*
-ForEach recursively loop through fields in MetadataModel.
-
-Parameters:
-  - group - metadata model. Should be of type gojsoncore.JsonObject.
-  - Callback - called for each field in a metadata model.
-*/
+// ForEach recursively loops through fields in MetadataModel.
+//
+// Parameters:
+//   - group: metadata model. Should be of type gojsoncore.JsonObject.
+//   - callback: called for each field in a metadata model.
 func ForEach(group any, callback ForeachCallback) {
 	fieldGroupProp, err := core.AsJsonObject(group)
 	if err != nil {
@@ -47,14 +45,12 @@ func ForEach(group any, callback ForeachCallback) {
 	}
 }
 
-/*
-ForeachCallback called  for each field in a metadata model
-
-Parameters:
-  - fieldGroup - current Field/Group property.
-
-Return:
- 1. `true` to signal loop should be terminated.
- 2. `true` to skip processing fieldGroup fields if it contains them.
-*/
+// ForeachCallback is called for each field in a metadata model.
+//
+// Parameters:
+//   - fieldGroup: current Field/Group property.
+//
+// Return:
+//  1. `true` to signal loop should be terminated.
+//  2. `true` to skip processing fieldGroup fields if it contains them.
 type ForeachCallback func(fieldGroup gojsoncore.JsonObject) (bool, bool)

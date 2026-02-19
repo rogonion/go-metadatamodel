@@ -5,13 +5,11 @@ import (
 	"github.com/rogonion/go-metadatamodel/core"
 )
 
-/*
-Map recursively modify fields in MetadataModel.
-
-Parameters:
-  - group - A metadata model. Should be of type gojsoncore.JsonObject.
-  - Callback - Called for each field in a metadata model.
-*/
+// Map recursively modifies fields in MetadataModel.
+//
+// Parameters:
+//   - metadataModelGroup: A metadata model. Should be of type gojsoncore.JsonObject.
+//   - callback: Called for each field in a metadata model.
 func Map(metadataModelGroup any, callback MapCallback) any {
 	fieldGroupProp, err := core.AsJsonObject(metadataModelGroup)
 	if err != nil {
@@ -46,16 +44,14 @@ func Map(metadataModelGroup any, callback MapCallback) any {
 	return fieldGroupProp
 }
 
-/*
-MapCallback called  for each field in a metadata model.
-
-Use to modify fields/group.
-
-Parameters:
-  - fieldGroup - current Field/Group property.
-
-Return:
- 1. fieldGroup whether modified or not.
- 2. `true` to skip processing fieldGroup fields if it contains them.
-*/
+// MapCallback is called for each field in a metadata model.
+//
+// Use to modify fields/group.
+//
+// Parameters:
+//   - fieldGroup: current Field/Group property.
+//
+// Return:
+//  1. fieldGroup whether modified or not.
+//  2. `true` to skip processing fieldGroup fields if it contains them.
 type MapCallback func(fieldGroup gojsoncore.JsonObject) (any, bool)

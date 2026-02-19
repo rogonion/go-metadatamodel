@@ -7,6 +7,7 @@ import (
 	"github.com/rogonion/go-metadatamodel/core"
 )
 
+// GetColumnFieldByIndexInUnskippedReadOrder retrieves a ColumnField by its index in the unskipped read order.
 func (n *ColumnFields) GetColumnFieldByIndexInUnskippedReadOrder(index int) (*ColumnField, bool) {
 	if index >= 0 && index < len(n.UnskippedReadOrderOfColumnFields) {
 		return n.GetColumnFieldByIndexInOriginalReadOrder(n.UnskippedReadOrderOfColumnFields[index])
@@ -14,6 +15,7 @@ func (n *ColumnFields) GetColumnFieldByIndexInUnskippedReadOrder(index int) (*Co
 	return nil, false
 }
 
+// GetColumnFieldByIndexInRepositionedReadOrder retrieves a ColumnField by its index in the repositioned read order.
 func (n *ColumnFields) GetColumnFieldByIndexInRepositionedReadOrder(index int) (*ColumnField, bool) {
 	if index >= 0 && index < len(n.RepositionedReadOrderOfColumnFields) {
 		return n.GetColumnFieldByIndexInOriginalReadOrder(n.RepositionedReadOrderOfColumnFields[index])
@@ -21,6 +23,7 @@ func (n *ColumnFields) GetColumnFieldByIndexInRepositionedReadOrder(index int) (
 	return nil, false
 }
 
+// GetColumnFieldByIndexInOriginalReadOrder retrieves a ColumnField by its index in the original extraction order.
 func (n *ColumnFields) GetColumnFieldByIndexInOriginalReadOrder(index int) (*ColumnField, bool) {
 	if index >= 0 && index < len(n.OriginalReadOrderOfColumnFields) {
 		return n.GetColumnFieldByFieldGroupJsonPathKey(n.OriginalReadOrderOfColumnFields[index].JSONPath())
@@ -28,6 +31,7 @@ func (n *ColumnFields) GetColumnFieldByIndexInOriginalReadOrder(index int) (*Col
 	return nil, false
 }
 
+// GetColumnFieldByFieldGroupJsonPathKey retrieves a ColumnField by its JSON path key.
 func (n *ColumnFields) GetColumnFieldByFieldGroupJsonPathKey(jsonPathKey path.JSONPath) (*ColumnField, bool) {
 	field, ok := n.Fields[jsonPathKey]
 	return field, ok
@@ -122,6 +126,7 @@ func (n *ColumnFields) Reposition() {
 	}
 }
 
+// NewColumnFields creates a new ColumnFields instance.
 func NewColumnFields() *ColumnFields {
 	return &ColumnFields{
 		Fields:                              make(Fields),
@@ -163,14 +168,18 @@ type ColumnFields struct {
 	RepositionFieldColumns RepositionFieldColumns
 }
 
+// FieldsToSkip is a set of JSON paths representing fields that should be skipped.
 type FieldsToSkip map[path.JSONPath]struct{}
 
+// FieldToSkip returns an empty struct, used as a value in the FieldsToSkip set.
 func FieldToSkip() struct{} {
 	return struct{}{}
 }
 
+// Fields is a map of JSON paths to ColumnField pointers.
 type Fields map[path.JSONPath]*ColumnField
 
+// ColumnField represents a single field (column) extracted from the metadata model.
 type ColumnField struct {
 	FieldColumnPosition FieldColumnPosition
 	// Property field metadata model property.

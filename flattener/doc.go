@@ -12,12 +12,17 @@ It can perform the following tasks:
 
 # Usage
 
+	import (
+		gojsoncore "github.com/rogonion/go-json/core"
+		"github.com/rogonion/go-json/object"
+		"github.com/rogonion/go-metadatamodel/flattener"
+	)
+
 ## Initialization
 
 1. Create a new instance of the Flattener using `NewFlattener`, providing the Metadata Model that defines the structure.
 
-	// Set metadata model
-	var metadataModel gojsoncore.JsonObject
+	var metadataModel gojsoncore.JsonObject // ... load metadata model
 	flattener := NewFlattener(metadataModel)
 
 2. Optionally, configure column behavior (skipping/reordering) using `WithColumnFields`.
@@ -30,7 +35,7 @@ It can perform the following tasks:
 
 Use `Flatten` to process a source object. This method appends the results to the Flattener's internal state, allowing for batch accumulation.
 
-	var sourceData any // map[string]any or struct
+	var sourceData any // e.g. map[string]any or struct
 	sourceObj := object.NewObject().WithSourceInterface(sourceData)
 
 	err := flattener.Flatten(sourceObj)
@@ -54,9 +59,12 @@ There are two ways to retrieve the flattened data:
 To process large datasets in chunks, use the `Reset` method to clear the internal state without re-allocating the Flattener.
 
 	for _, batch := range hugeDataset {
-	    flattener.Flatten(object.NewObject().WithSourceInterface(batch))
-	    flattener.WriteToDestination(finalOutput)
-	    flattener.Reset() // Clear internal table for next batch
+		flattener.Flatten(object.NewObject().WithSourceInterface(batch))
+
+		// Process the current batch results
+		batchResult := flattener.GetResult()
+
+		flattener.Reset() // Clear internal table for next batch
 	}
 */
 package flattener

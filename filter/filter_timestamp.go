@@ -10,6 +10,7 @@ import (
 	"github.com/rogonion/go-metadatamodel/core"
 )
 
+// IsTimestampConditionTrue checks if a timestamp condition is met.
 func IsTimestampConditionTrue(ctx FilterContext, _ path.JSONPath, filterCondition string, valueFound reflect.Value, filterValue gojsoncore.JsonObject) (bool, error) {
 	const FunctionName = "IsTimestampConditionTrue"
 

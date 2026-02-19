@@ -51,6 +51,46 @@ func TestFlattener_Flatten_And_WriteTo(t *testing.T) {
 	}
 }
 
+func TestFlattener_Reset(t *testing.T) {
+	// Setup
+	userMeta := testdata.UserMetadataModel(nil)
+	f := NewFlattener(userMeta)
+
+	// 1. Process Batch 1
+	user1 := testdata.User{ID: []int{1}, Name: []string{"Alice"}}
+	if err := f.Flatten(object.NewObject().WithSourceInterface(user1)); err != nil {
+		t.Fatalf("Batch 1 Flatten failed: %v", err)
+	}
+
+	// Verify Batch 1 State
+	if len(f.GetResult()) != 1 {
+		t.Errorf("Expected 1 row after Batch 1, got %d", len(f.GetResult()))
+	}
+
+	// 2. Perform Reset
+	f.Reset()
+
+	// Verify State Cleared
+	if len(f.GetResult()) != 0 {
+		t.Errorf("Expected 0 rows after Reset, got %d", len(f.GetResult()))
+	}
+
+	// 3. Process Batch 2
+	user2 := testdata.User{ID: []int{2}, Name: []string{"Bob"}}
+	if err := f.Flatten(object.NewObject().WithSourceInterface(user2)); err != nil {
+		t.Fatalf("Batch 2 Flatten failed: %v", err)
+	}
+
+	// Verify Batch 2 State (Should NOT contain Alice)
+	result := f.GetResult()
+	if len(result) != 1 {
+		t.Errorf("Expected 1 row after Batch 2, got %d", len(result))
+	}
+
+	// Optional: Check value to ensure it is Bob, not Alice
+	// (Assuming column 1 is Name based on default read order)
+}
+
 // --- Test Data Structures ---
 
 type flattenTestData struct {

@@ -2,7 +2,6 @@ package filter
 
 import (
 	"errors"
-	"fmt"
 	"reflect"
 	"testing"
 
@@ -78,7 +77,7 @@ func filterDataTestData(yield func(data *filterData) bool) {
 	if !yield(
 		&filterData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d: Product Metadata Model", testCaseIndex),
+				TestTitle: "Product Metadata Model - Filter by ID and Name",
 			},
 			Object:        obj,
 			MetadataModel: metadataModel,
@@ -162,7 +161,7 @@ func filterDataTestData(yield func(data *filterData) bool) {
 	if !yield(
 		&filterData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d: User Profile Metadata Model", testCaseIndex),
+				TestTitle: "User Profile Metadata Model - Filter by Address Count or City Prefix",
 			},
 			Object:        obj,
 			MetadataModel: metadataModel,
@@ -203,7 +202,7 @@ func filterDataTestData(yield func(data *filterData) bool) {
 	if !yield(
 		&filterData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d: User Profile Metadata Model with focus on Address of Profile at index 2", testCaseIndex),
+				TestTitle: "User Profile Metadata Model - Focused Filter on Address at Index 2",
 			},
 			Object:        obj,
 			MetadataModel: metadataModel,

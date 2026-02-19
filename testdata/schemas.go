@@ -7,6 +7,7 @@ import (
 	"github.com/rogonion/go-json/schema"
 )
 
+// UserSchema returns the schema definition for the User struct.
 func UserSchema() *schema.DynamicSchemaNode {
 	return &schema.DynamicSchemaNode{
 		Kind: reflect.Struct,
@@ -40,6 +41,7 @@ func UserSchema() *schema.DynamicSchemaNode {
 	}
 }
 
+// ProductSchema returns the schema definition for the Product struct.
 func ProductSchema() *schema.DynamicSchemaNode {
 	return &schema.DynamicSchemaNode{
 		Kind: reflect.Struct,
@@ -73,6 +75,7 @@ func ProductSchema() *schema.DynamicSchemaNode {
 	}
 }
 
+// CompanySchema returns the schema definition for the Company struct.
 func CompanySchema() *schema.DynamicSchemaNode {
 	return &schema.DynamicSchemaNode{
 		Kind: reflect.Struct,
@@ -99,6 +102,7 @@ func CompanySchema() *schema.DynamicSchemaNode {
 	}
 }
 
+// AddressSchema returns the schema definition for the Address struct.
 func AddressSchema() *schema.DynamicSchemaNode {
 	return &schema.DynamicSchemaNode{
 		Kind: reflect.Struct,
@@ -136,6 +140,7 @@ func AddressSchema() *schema.DynamicSchemaNode {
 	}
 }
 
+// UserProfileSchema returns the schema definition for the UserProfile struct.
 func UserProfileSchema() *schema.DynamicSchemaNode {
 	return &schema.DynamicSchemaNode{
 		Kind: reflect.Struct,
@@ -166,6 +171,7 @@ func UserProfileSchema() *schema.DynamicSchemaNode {
 	}
 }
 
+// EmployeeSchema returns the schema definition for the Employee struct.
 func EmployeeSchema() *schema.DynamicSchemaNode {
 	return &schema.DynamicSchemaNode{
 		Kind: reflect.Struct,

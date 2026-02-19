@@ -1,7 +1,6 @@
 package core
 
 import (
-	"fmt"
 	"reflect"
 	"testing"
 
@@ -48,10 +47,14 @@ type JsonPathToValueData struct {
 
 func JsonPathToValueTestData(yield func(data *JsonPathToValueData) bool) {
 	testCaseIndex := 1
+
+	// Case 1: Remove GroupFields, Source is Array
+	// Scenario: The source is an array (e.g. `[...]`), so the first `GroupFields[*]` is removed entirely.
+	// Remaining `[*]` placeholders are replaced by default index `0` because `ReplaceArrayPathPlaceholderWithActualIndexes` is true but no indexes are provided.
 	if !yield(
 		&JsonPathToValueData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+				TestTitle: "Remove GroupFields, Source is Array, Default Index (0)",
 			},
 			Path:                   "$.GroupFields[*].Group1.GroupFields[*].Group1Field",
 			RemoveGroupFields:      true,
@@ -65,10 +68,13 @@ func JsonPathToValueTestData(yield func(data *JsonPathToValueData) bool) {
 	}
 
 	testCaseIndex++
+	// Case 2: Remove GroupFields, Source is Object
+	// Scenario: The source is an object (default), so the first `GroupFields[*]` is stripped of the `GroupFields` key but keeps the structure relative to root.
+	// Remaining `[*]` placeholders are replaced by default index `0`.
 	if !yield(
 		&JsonPathToValueData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+				TestTitle: "Remove GroupFields, Source is Object, Default Index (0)",
 			},
 			Path:              "$.GroupFields[*].Group1.GroupFields[*].Group1Field",
 			RemoveGroupFields: true,
@@ -81,10 +87,13 @@ func JsonPathToValueTestData(yield func(data *JsonPathToValueData) bool) {
 	}
 
 	testCaseIndex++
+	// Case 3: Keep GroupFields, Specific Indexes
+	// Scenario: `RemoveGroupFields` is false, so the path structure is preserved.
+	// `[*]` placeholders are replaced by the provided `ArrayIndexes` [1, 2].
 	if !yield(
 		&JsonPathToValueData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+				TestTitle: "Keep GroupFields, Specific Indexes [1, 2]",
 			},
 			Path:         "$.GroupFields[*].Group1.GroupFields[*].Group1Field",
 			ExpectedOk:   true,
@@ -96,10 +105,12 @@ func JsonPathToValueTestData(yield func(data *JsonPathToValueData) bool) {
 	}
 
 	testCaseIndex++
+	// Case 4: Remove GroupFields, Source is Array, Specific Indexes
+	// Scenario: Source is array (strips first group), remaining `[*]` replaced by `ArrayIndexes`.
 	if !yield(
 		&JsonPathToValueData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+				TestTitle: "Remove GroupFields, Source is Array, Specific Indexes [1, 2]",
 			},
 			Path:                   "$.GroupFields[*].Group1.GroupFields[*].Group1Field",
 			RemoveGroupFields:      true,
@@ -113,10 +124,12 @@ func JsonPathToValueTestData(yield func(data *JsonPathToValueData) bool) {
 	}
 
 	testCaseIndex++
+	// Case 5: Remove GroupFields, Source is Object, Single Index
+	// Scenario: Source is object. `ArrayIndexes` has one value [2], which replaces the remaining `[*]` after group removal.
 	if !yield(
 		&JsonPathToValueData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+				TestTitle: "Remove GroupFields, Source is Object, Single Index [2]",
 			},
 			Path:              "$.GroupFields[*].Group1.GroupFields[*].Group1Field",
 			RemoveGroupFields: true,

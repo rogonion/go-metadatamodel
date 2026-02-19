@@ -7,6 +7,7 @@ import (
 	"github.com/rogonion/go-metadatamodel/core"
 )
 
+// UserInformationMetadataModel returns a sample metadata model for testing iteration functions.
 func UserInformationMetadataModel() gojsoncore.JsonObject {
 	return deep.MustCopy(gojsoncore.JsonObject{
 		core.FieldGroupJsonPathKey: path.JsonpathKeyRoot,

@@ -67,7 +67,7 @@ func extractionTestData(yield func(data *extractionData) bool) {
 	if !yield(
 		&extractionData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+				TestTitle: "User Metadata Model Extraction",
 			},
 			MetadataModel:        metadataModel,
 			Schema:               sch,
@@ -85,7 +85,7 @@ func extractionTestData(yield func(data *extractionData) bool) {
 	if !yield(
 		&extractionData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d", testCaseIndex),
+				TestTitle: "Employee Metadata Model Extraction",
 			},
 			MetadataModel:        metadataModel,
 			Schema:               sch,
@@ -109,7 +109,7 @@ func extractionTestData(yield func(data *extractionData) bool) {
 	if !yield(
 		&extractionData{
 			TestData: internal.TestData{
-				TestTitle: fmt.Sprintf("Test Case %d: Test property '%s' for group field that is a field", testCaseIndex, core.FieldGroupViewValuesInSeparateColumns),
+				TestTitle: fmt.Sprintf("Product Metadata Model - Pivoted Name Column ('%s')", core.FieldGroupViewValuesInSeparateColumns),
 			},
 			MetadataModel:        metadataModel,
 			Schema:               sch,
@@ -150,7 +150,7 @@ func extractionTestData(yield func(data *extractionData) bool) {
 		if !yield(
 			&extractionData{
 				TestData: internal.TestData{
-					TestTitle: fmt.Sprintf("Test Case %d: Test column positioning for 'Price' after 'ID'", testCaseIndex),
+					TestTitle: "Product Metadata Model - Reposition 'Price' after 'ID'",
 				},
 				MetadataModel:        metadataModel,
 				Schema:               sch,
@@ -201,7 +201,7 @@ func extractionTestData(yield func(data *extractionData) bool) {
 		if !yield(
 			&extractionData{
 				TestData: internal.TestData{
-					TestTitle: fmt.Sprintf("Test Case %d: Test column positioning for 'Name' before 'ID'", testCaseIndex),
+					TestTitle: "Product Metadata Model - Reposition 'Name' before 'ID'",
 				},
 				MetadataModel:        metadataModel,
 				Schema:               sch,
@@ -232,7 +232,7 @@ func extractionTestData(yield func(data *extractionData) bool) {
 		if !yield(
 			&extractionData{
 				TestData: internal.TestData{
-					TestTitle: fmt.Sprintf("Test Case %d: Test property '%s' for group field that is a group", testCaseIndex, core.FieldGroupViewValuesInSeparateColumns),
+					TestTitle: fmt.Sprintf("UserProfile Metadata Model - Pivot Address Group ('%s')", core.FieldGroupViewValuesInSeparateColumns),
 				},
 				MetadataModel:        metadataModel,
 				Schema:               sch,
@@ -258,7 +258,7 @@ func extractionTestData(yield func(data *extractionData) bool) {
 		if !yield(
 			&extractionData{
 				TestData: internal.TestData{
-					TestTitle: fmt.Sprintf("Test Case %d: Test matching props by disabling all fields in Address just by setting '%s' to true on Address alone", testCaseIndex, core.FieldGroupViewDisable),
+					TestTitle: fmt.Sprintf("UserProfile Metadata Model - Disable Address Fields via Parent Property ('%s')", core.FieldGroupViewDisable),
 				},
 				MetadataModel: metadataModel,
 				Schema:        sch,
@@ -336,7 +336,7 @@ func extractionTestData(yield func(data *extractionData) bool) {
 			if !yield(
 				&extractionData{
 					TestData: internal.TestData{
-						TestTitle: fmt.Sprintf("Test Case %d: Test column positioning for 'Address' before 'Age'", testCaseIndex),
+						TestTitle: "UserProfile Metadata Model - Reposition 'Address' before 'Age'",
 					},
 					MetadataModel:        metadataModel,
 					Schema:               sch,
@@ -395,7 +395,7 @@ func extractionTestData(yield func(data *extractionData) bool) {
 		if !yield(
 			&extractionData{
 				TestData: internal.TestData{
-					TestTitle: fmt.Sprintf("Test Case %d: Test column positioning for nested group 'Profile' after 'Skills'", testCaseIndex),
+					TestTitle: "Employee Metadata Model - Reposition Nested 'Profile' after 'Skills'",
 				},
 				MetadataModel:        metadataModel,
 				Schema:               sch,

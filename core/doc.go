@@ -85,5 +85,22 @@ Example:
 
 	// Delete value for column `Price`
 	noOfModifications, err = fieldValue.Delete("Price", "", nil)
+
+## Utils
+
+Shared utility functions for manipulating and inspecting metadata models.
+
+### MergeRightJsonObjectIntoLeft
+
+Merges two JsonObjects.
+
+	left := gojsoncore.JsonObject{"a": 1}
+	right := gojsoncore.JsonObject{"b": 2}
+	core.MergeRightJsonObjectIntoLeft(left, right)
+	// left is now {"a": 1, "b": 2}
+
+### IsFieldAGroup
+
+	isGroup := core.IsFieldAGroup(fieldGroup)
 */
 package core

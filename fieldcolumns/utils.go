@@ -55,8 +55,11 @@ func getFieldColumnsFromMetadataModel(metadataModel gojsoncore.JsonObject, sch s
 														FieldJsonPathKeySuffix:                      nFgKeySuffix,
 													}
 													columnFields.Fields[fieldColumnPosition.JSONPath()] = &ColumnField{
+														FieldColumnPosition:                    *fieldColumnPosition,
 														Property:                               newField,
 														IndexInOriginalReadOrderOfColumnFields: len(columnFields.OriginalReadOrderOfColumnFields),
+														IndexInRepositionedColumnFields:        -1,
+														IndexInUnskippedColumnFields:           -1,
 													}
 													columnFields.OriginalReadOrderOfColumnFields = append(columnFields.OriginalReadOrderOfColumnFields, fieldColumnPosition)
 
@@ -99,8 +102,11 @@ func getFieldColumnsFromMetadataModel(metadataModel gojsoncore.JsonObject, sch s
 							FieldViewValuesInSeparateColumnsHeaderIndex: columnIndex,
 						}
 						columnFields.Fields[fieldColumnPosition.JSONPath()] = &ColumnField{
+							FieldColumnPosition:                    *fieldColumnPosition,
 							Property:                               newField,
 							IndexInOriginalReadOrderOfColumnFields: len(columnFields.OriginalReadOrderOfColumnFields),
+							IndexInRepositionedColumnFields:        -1,
+							IndexInUnskippedColumnFields:           -1,
 						}
 						columnFields.OriginalReadOrderOfColumnFields = append(columnFields.OriginalReadOrderOfColumnFields, fieldColumnPosition)
 
@@ -120,8 +126,11 @@ func getFieldColumnsFromMetadataModel(metadataModel gojsoncore.JsonObject, sch s
 				}
 				if newField, err := deep.Copy(fieldGroup); err == nil {
 					columnFields.Fields[fieldColumnPosition.JSONPath()] = &ColumnField{
+						FieldColumnPosition:                    *fieldColumnPosition,
 						Property:                               newField,
 						IndexInOriginalReadOrderOfColumnFields: len(columnFields.OriginalReadOrderOfColumnFields),
+						IndexInRepositionedColumnFields:        -1,
+						IndexInUnskippedColumnFields:           -1,
 					}
 					columnFields.OriginalReadOrderOfColumnFields = append(columnFields.OriginalReadOrderOfColumnFields, fieldColumnPosition)
 
@@ -142,6 +151,7 @@ func getFieldColumnsFromMetadataModel(metadataModel gojsoncore.JsonObject, sch s
 	return columnFields
 }
 
+// ExtractFieldColumnPosition extracts the FieldColumnPosition from a field's properties.
 func ExtractFieldColumnPosition(field gojsoncore.JsonObject) *FieldColumnPosition {
 	if value, err := core.AsJsonObject(field[core.FieldColumnPosition]); err == nil {
 		if fieldGroupJsonPathKey, err := core.AsJSONPath(value[core.FieldGroupJsonPathKey]); err == nil {

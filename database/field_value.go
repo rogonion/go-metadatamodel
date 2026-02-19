@@ -32,10 +32,12 @@ func (n *FieldValue) Get(columnFieldName string, suffixJsonPath path.JSONPath, a
 	return n.sourceData.Get(jsonPathKey)
 }
 
+// GetValueFoundReflected returns the value found as a reflect.Value.
 func (n *FieldValue) GetValueFoundReflected() reflect.Value {
 	return n.sourceData.GetValueFoundReflected()
 }
 
+// GetValueFoundInterface returns the value found as an interface{}.
 func (n *FieldValue) GetValueFoundInterface() any {
 	return n.sourceData.GetValueFoundInterface()
 }
@@ -115,20 +117,24 @@ func (n *FieldValue) getJsonPathToValue(columnFieldName string, suffixJsonPath p
 	return jsonPathToValue, nil
 }
 
+// WithColumnFields sets the column fields.
 func (n *FieldValue) WithColumnFields(value *ColumnFields) *FieldValue {
 	n.SetColumnFields(value)
 	return n
 }
 
+// SetColumnFields sets the column fields.
 func (n *FieldValue) SetColumnFields(value *ColumnFields) {
 	n.columnFields = value
 }
 
+// WithSourceData sets the source data object.
 func (n *FieldValue) WithSourceData(value *object.Object) *FieldValue {
 	n.SetSourceData(value)
 	return n
 }
 
+// SetSourceData sets the source data object.
 func (n *FieldValue) SetSourceData(value *object.Object) {
 	n.sourceData = value
 	objectSourceReflect := n.sourceData.GetSourceReflected()

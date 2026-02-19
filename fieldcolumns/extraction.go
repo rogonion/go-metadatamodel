@@ -260,39 +260,48 @@ func (n *Extraction) addFlatColumnContext(field gojsoncore.JsonObject, columnInd
 	}
 }
 
+// WithSchema sets the schema to be used during extraction.
 func (n *Extraction) WithSchema(value schema.Schema) *Extraction {
 	n.SetSchema(value)
 	return n
 }
 
+// SetSchema sets the schema to be used during extraction.
 func (n *Extraction) SetSchema(value schema.Schema) {
 	n.schema = value
 }
 
+// WithAdd sets the add property matcher.
 func (n *Extraction) WithAdd(value core.FieldGroupPropertiesMatch) *Extraction {
 	n.SetAdd(value)
 	return n
 }
 
+// SetAdd sets the add property matcher.
 func (n *Extraction) SetAdd(value core.FieldGroupPropertiesMatch) {
 	n.add = value
 }
 
+// WithSkip sets the skip property matcher.
 func (n *Extraction) WithSkip(value core.FieldGroupPropertiesMatch) *Extraction {
 	n.SetSkip(value)
 	return n
 }
 
+// SetSkip sets the skip property matcher.
 func (n *Extraction) SetSkip(value core.FieldGroupPropertiesMatch) {
 	n.skip = value
 }
 
+// NewColumnFieldsExtraction creates a new Extraction instance for the given metadata model.
 func NewColumnFieldsExtraction(metadataModel gojsoncore.JsonObject) *Extraction {
 	n := new(Extraction)
 	n.metadataModel = metadataModel
 	return n
 }
 
+// Extraction handles the recursive extraction of fields from a metadata model into a flat ColumnFields structure.
+// It supports handling nested groups, pivoting arrays into columns, and applying add/skip filters.
 type Extraction struct {
 	metadataModel gojsoncore.JsonObject
 
